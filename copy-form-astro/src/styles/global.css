@@ -1,11 +1,13 @@
 @import "tailwindcss";
+@import "@fortawesome/fontawesome-free/css/all.css";
 
 @theme{
-    --bg-color-light: #e3e3e3;
-    --bg-color-dark: #11002b;
+    --bg-color-light: #e0e0e0;
+    --bg-color-dark: #1f1f1f;
     --text-color-light: #000000;
     --text-color-dark: #ffffff;
 }
+
 
 *,
 *::before,
@@ -15,5 +17,5 @@
     outline: none;
     list-style-type: none;
     box-sizing: border-box;
-    color: white;
+    color: black;
 }
