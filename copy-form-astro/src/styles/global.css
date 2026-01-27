@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme{
+    --bg-color-light: #e3e3e3;
+    --bg-color-dark: #11002b;
+    --text-color-light: #000000;
+    --text-color-dark: #ffffff;
+}
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    list-style-type: none;
+    box-sizing: border-box;
+    color: white;
+}
