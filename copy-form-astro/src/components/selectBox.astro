@@ -1,0 +1,80 @@
+---
+const {
+  id = "",
+  placeholder = "",
+  required = false,
+  options = [],
+} = Astro.props;
+---
+
+<div class="grid grid-cols-1 gap-5 group focus-within:z-3">
+  <div>
+    <label
+      for=`selectBox${id}`
+      class="font-bold text-[20px] flex items-center capitalize w-fit"
+    >
+      <span class="dark:text-dark!">{placeholder}</span>
+      {
+        required && (
+          <span class="flex items-center h-full">
+            <i class="fa-solid fa-asterisk text-[0.5em] before:text-[#ff757e]!" />
+          </span>
+        )
+      }
+    </label>
+  </div>
+
+  <div class="relative" id=`containerSelectBox${id}`>
+    <div
+      class="dark:text-dark! bg-(--bg-color-light) dark:bg-(--bg-color-dark) grid-cols-1 gap-3 hidden group-focus-within:grid p-5! pt-25! absolute w-full z-1 rounded-4xl
+            shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)]
+            dark:shadow-[5px_5px_10px_var(--shadow-color-dark),-5px_-5px_10px_var(--light-color-dark)]"
+    >
+      {
+        options.map((option: string) => {
+          const label = option;
+          return (
+            <div
+              data-drop-label
+              class=" dark:text-dark! p-5! dark:hover:shadow-[5px_5px_10px_var(--shadow-color-dark),-5px_-5px_10px_var(--light-color-dark)] hover:shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)] rounded-2xl cursor-pointer font-medium transition-all duration-300"
+            >
+              {label}
+            </div>
+          );
+        })
+      }
+    </div>
+    <div class="group-focus-within:p-5!">
+      <div class="relative">
+        <input
+          required={required}
+          placeholder=`Select ${placeholder} here...`
+          readonly
+          class="w-full rounded-full p-5! pr-12! transition-all duration-300 font-bold dark:text-dark! cursor-pointer appearance-none
+           shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)]
+           dark:shadow-[5px_5px_10px_var(--shadow-color-dark),-5px_-5px_10px_var(--light-color-dark)]
+           focus:shadow-[inset_0_5px_4px_var(--shadow-color),0_3px_2px_var(--light-color)]
+           dark:focus:shadow-[inset_0_5px_4px_var(--shadow-color-dark),inset_0_-3px_2px_var(--light-color-dark)] z-2 relative"
+        />
+
+        <i
+          class="fa-solid fa-chevron-down absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none dark:before:text-dark! group-focus-within:rotate-180 transition-all duration-300 z-2"
+        ></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" define:vars={{ id }}>
+  const container = document.getElementById("containerSelectBox" + id);
+  const options = container.querySelectorAll("[data-drop-label]");
+  const input = container.querySelector("input");
+
+  options.forEach((option) => {
+    option.addEventListener("mousedown", () => {
+      if (input) {
+        input.value = option.textContent?.trim() || "";
+      }
+    });
+  });
+</script>
