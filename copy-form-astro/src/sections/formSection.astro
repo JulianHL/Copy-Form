@@ -1,12 +1,28 @@
 ---
 import Form from "../components/form.astro";
 import GeneralInput from "../components/generalInput.astro";
+import Button from "../components/button.astro";
 ---
 
 <section class="flex justify-center">
   <div class="w-[60%] h-screen">
     <Form>
       <GeneralInput placeholder="example" required={true} />
+      <Button
+        colorHover="var(--color-copy)"
+        colorHoverDark="var(--color-copy-dark)"
+        ><submit id="copy-button" class="dark:text-dark!"
+          >Copy <i class="fa-solid fa-copy dark:before:text-dark!"></i></submit
+        ></Button
+      >
+      <Button
+        colorHover="var(--color-delete)"
+        colorHoverDark="var(--color-delete-dark)"
+        ><submit id="clear-button" class="dark:text-dark!"
+          >Clear <i class="fa-solid fa-trash-can dark:before:text-dark!"
+          ></i></submit
+        ></Button
+      >
     </Form>
   </div>
 </section>

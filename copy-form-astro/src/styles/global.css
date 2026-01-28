@@ -3,9 +3,17 @@
 
 @theme{
     --bg-color-light: #e0e0e0;
-    --bg-color-dark: #1f1f1f;
+    --bg-color-dark: #2e2e2e;
     --text-color-light: #000000;
     --text-color-dark: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --light-color: rgba(255, 255, 255, 0.8);
+    --shadow-color-dark: rgba(0, 0, 0, 0.6);
+    --light-color-dark: rgba(255, 255, 255, 0.05);
+    --color-copy: #9ffcb6;
+    --color-copy-dark: #024a13;
+    --color-delete: #ffadb3;
+    --color-delete-dark: #4a0207;
 }
 
 

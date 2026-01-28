@@ -1,10 +1,18 @@
 ---
-const { type = "text", placeholder = "", required = false } = Astro.props;
+const {
+  id = "",
+  type = "text",
+  placeholder = "",
+  required = false,
+} = Astro.props;
 ---
 
 <div class="grid grid-cols-1 gap-5">
   <div>
-    <label class="font-bold text-[20px] flex items-center capitalize">
+    <label
+      for=`${type}Box${id}`
+      class="font-bold text-[20px] flex items-center capitalize"
+    >
       <span class="dark:text-dark!">{placeholder}</span>
       {
         required && (
@@ -17,13 +25,14 @@ const { type = "text", placeholder = "", required = false } = Astro.props;
   </div>
 
   <input
+    id=`${type}Box${id}`
     type={type}
     placeholder=`Type ${placeholder} here...`
     required={required}
     class="w-full rounded-full p-5! transition-all duration-300 font-bold dark:text-dark!
-         shadow-[5px_5px_10px_rgba(0,0,0,0.1),-5px_-5px_10px_rgba(255,255,255,0.8)]
-         dark:shadow-[5px_5px_10px_rgba(0,0,0,0.6),-5px_-5px_10px_rgba(255,255,255,0.05)]
-         focus:shadow-[inset_0_5px_4px_rgba(0,0,0,0.1),0_3px_2px_rgba(255,255,255,0.8)]
-         dark:focus:shadow-[inset_0_5px_4px_rgba(0,0,0,0.6),inset_0_-3px_2px_rgba(255,255,255,0.05)]"
+         shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)]
+         dark:shadow-[5px_5px_10px_var(--shadow-color-dark),-5px_-5px_10px_var(--light-color-dark)]
+         focus:shadow-[inset_0_5px_4px_var(--shadow-color),0_3px_2px_var(--light-color)]
+         dark:focus:shadow-[inset_0_5px_4px_var(--shadow-color-dark),inset_0_-3px_2px_var(--light-color-dark)]"
   />
 </div>
