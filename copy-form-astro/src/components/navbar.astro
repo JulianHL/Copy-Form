@@ -1,0 +1,42 @@
+---
+import DropDownMenu from "./dropDownMenu.astro";
+---
+
+<nav class="bg-purple-900 h-20 w-full fixed">
+  <ul class="flex justify-center items-center h-full gap-10 font-extrabold">
+    <li class="h-full">
+      <DropDownMenu
+        label="Auto"
+        link="/auto"
+        options={[{ label: "Towing", link: "/auto/towing" }]}
+      />
+    </li>
+    <li class="h-full">
+      <a href="/" class="flex items-center h-full"
+        ><span class="text-dark! hover:text-purple-300!">Property</span></a
+      >
+    </li>
+    <li class="h-full">
+      <a href="/" class="flex items-center h-full"
+        ><span class="text-dark! hover:text-purple-300!">Life Style</span></a
+      >
+    </li>
+    <li class="h-full">
+      <DropDownMenu
+        label="CRM"
+        link="/auto"
+        options={[
+          { label: "Commercial", link: "/commercial" },
+          { label: "HOPP", link: "/hopp" },
+          { label: "Liability", link: "/liability" },
+          { label: "CDW", link: "/cdw" },
+        ]}
+      />
+    </li>
+    <li class="h-full">
+      <a href="/" class="flex items-center h-full"
+        ><span class="text-dark! hover:text-purple-300!">Message</span></a
+      >
+    </li>
+  </ul>
+</nav>

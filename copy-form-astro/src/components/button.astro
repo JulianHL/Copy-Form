@@ -6,8 +6,8 @@ const {
 ---
 
 <button
-  style=`--color-hover:${colorHover}; --color-hover-dark:${colorHoverDark}`
-  class="font-bold px-6! py-4! cursor-pointer rounded-xl transition-all duration-1000
+  style=`--color-hover:${colorHover}; --color-hover-dark:${colorHoverDark};`
+  class=`font-bold cursor-pointer rounded-xl transition-all duration-1000
         shadow-[0.5rem_0.5rem_1rem_var(--shadow-color),-0.5rem_-0.5rem_1rem_var(--light-color)]
         dark:shadow-[0.5rem_0.5rem_1rem_var(--shadow-color-dark),-0.5rem_-0.5rem_1rem_var(--light-color-dark)]
         hover:shadow-[0.5rem_0.5rem_1rem_var(--light-color),-0.5rem_-0.5rem_1rem_var(--shadow-color)]
@@ -16,7 +16,7 @@ const {
         dark:hover:shadow-[0.5rem_0.5rem_1rem_var(--light-color-dark),-0.5rem_-0.5rem_1rem_var(--shadow-color-dark)]
         dark:hover:bg-(--color-hover-dark)
         dark:active:shadow-[0.2rem_0.2rem_0.5rem_var(--light-color-dark),inset_0.2rem_0.2rem_1rem_var(--shadow-color-dark)]
-        w-fit"
+        `
 >
   <slot />
 </button>

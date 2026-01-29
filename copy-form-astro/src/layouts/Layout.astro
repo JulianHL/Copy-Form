@@ -1,4 +1,5 @@
 ---
+import Navbar from "../components/navbar.astro";
 import "../styles/global.css";
 const { title = "Copy Form" } = Astro.props;
 ---
@@ -13,7 +14,9 @@ const { title = "Copy Form" } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="bg-(--bg-color-light) dark:bg-(--bg-color-dark)">
-    <header></header>
+    <header class="h-20">
+      <Navbar />
+    </header>
     <main>
       <slot />
     </main>
