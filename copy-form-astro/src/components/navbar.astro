@@ -4,38 +4,52 @@ import DropDownMenu from "./dropDownMenu.astro";
 
 <nav class="bg-purple-900 h-20 w-full fixed">
   <ul class="flex justify-center items-center h-full gap-10 font-extrabold">
-    <li class="h-full">
-      <DropDownMenu
-        label="Auto"
-        link="/auto"
-        options={[{ label: "Towing", link: "/auto/towing" }]}
-      />
-    </li>
-    <li class="h-full">
-      <a href="/" class="flex items-center h-full"
-        ><span class="text-dark! hover:text-purple-300!">Property</span></a
+    <li class="h-full group">
+      <DropDownMenu options={[{ label: "Towing", link: "/auto/towing" }]}>
+        <a href="/auto"
+          ><span
+            class="text-dark! hover:text-purple-300! rounded-xl px-5! py-2! group-hover:shadow-[inset_0_2px_4px_var(--shadow-color-navbar),inset_0_-3px_2px_var(--light-color-dark)] transition-all duration-300"
+            >Auto</span
+          ></a
+        ></DropDownMenu
       >
     </li>
-    <li class="h-full">
-      <a href="/" class="flex items-center h-full"
-        ><span class="text-dark! hover:text-purple-300!">Life Style</span></a
+    <li class="h-full group">
+      <a href="/property" class="flex items-center h-full"
+        ><span
+          class="text-dark! hover:text-purple-300! rounded-xl px-5! py-2! group-hover:shadow-[inset_0_2px_4px_var(--shadow-color-navbar),inset_0_-3px_2px_var(--light-color-dark)] transition-all duration-300"
+          >Property</span
+        ></a
       >
     </li>
-    <li class="h-full">
+    <li class="h-full group">
+      <a href="/lifestyle" class="flex items-center h-full"
+        ><span
+          class="text-dark! hover:text-purple-300! rounded-xl px-5! py-2! group-hover:shadow-[inset_0_2px_4px_var(--shadow-color-navbar),inset_0_-3px_2px_var(--light-color-dark)] transition-all duration-300"
+          >Life Style</span
+        ></a
+      >
+    </li>
+    <li class="h-full group">
       <DropDownMenu
-        label="CRM"
-        link="/auto"
         options={[
           { label: "Commercial", link: "/commercial" },
-          { label: "HOPP", link: "/hopp" },
           { label: "Liability", link: "/liability" },
+          { label: "HOPP", link: "/hopp" },
           { label: "CDW", link: "/cdw" },
         ]}
-      />
+        ><span
+          class="text-dark! hover:text-purple-300! rounded-xl px-5! py-2! cursor-default group-hover:shadow-[inset_0_2px_4px_var(--shadow-color-navbar),inset_0_-3px_2px_var(--light-color-dark)] transition-all duration-300"
+          >CRM</span
+        ></DropDownMenu
+      >
     </li>
-    <li class="h-full">
-      <a href="/" class="flex items-center h-full"
-        ><span class="text-dark! hover:text-purple-300!">Message</span></a
+    <li class="h-full group">
+      <a href="/message" class="flex items-center h-full"
+        ><span
+          class="text-dark! hover:text-purple-300! rounded-xl px-5! py-2! group-hover:shadow-[inset_0_2px_4px_var(--shadow-color-navbar),inset_0_-3px_2px_var(--light-color-dark)] transition-all duration-300"
+          >Message</span
+        ></a
       >
     </li>
   </ul>

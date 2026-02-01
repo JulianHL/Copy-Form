@@ -1,25 +1,24 @@
 ---
-const { options = [], link = "/", label = "" } = Astro.props;
+const { options = [] } = Astro.props;
 ---
 
-<div
-  class="group relative h-full flex items-center justify-center px-5! cursor-pointer"
->
-  <a href={link} class="flex items-center h-full"
-    ><span class="text-dark! hover:text-purple-300!">{label}</span></a
-  >
+<div class="group relative h-full flex items-center justify-center px-5!">
+  <slot />
   <div
-    class="group-hover:grid grid-cols-1 gap-3 top-20 hidden absolute w-40 bg-purple-300 rounded-b-2xl p-5! shadow-[0.5rem_0.5rem_1rem_var(--shadow-color-dark),-0.5rem_-0.5rem_1rem_var(--light-color-dark)]"
+    class="w-max group-hover:grid grid-cols-1 gap-3 top-20 hidden absolute bg-purple-300 rounded-b-2xl p-5! shadow-[0.2rem_0.1rem_0.5rem_var(--shadow-color-dark),-0.5rem_-0.5rem_1rem_var(--light-color-dark)]"
   >
     {
       options.map((option: { label: string; link: string }) => {
         const label = option.label;
         const link = option.link;
         return (
-          <a href={link}>
-            <span class="text-purple-900! hover:text-purple-950! flex justify-center">
+          <a
+            href={link}
+            class="hover:shadow-[5px_5px_10px_var(--shadow-color),-5px_-2px_10px_var(--light-color-dropdown)] p-2! rounded-xl transition-all duration-300"
+          >
+            <div class="text-purple-900! hover:text-purple-950! w-full h-full">
               {label}
-            </span>
+            </div>
           </a>
         );
       })
