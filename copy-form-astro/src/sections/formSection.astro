@@ -9,19 +9,7 @@ import SelectBox from "../components/selectBox.astro";
   <div class="w-[60%] h-screen">
     <Form>
       <GeneralInput placeholder="example" required={true} />
-      <SelectBox
-        id="1"
-        placeholder="yes or no"
-        required={true}
-        options={["Yes", "No"]}
-      />
-      <SelectBox
-        id="2"
-        placeholder="yes or no"
-        required={true}
-        options={["Yes", "No"]}
-      />
-      <GeneralInput type="date" placeholder="date" required={true} />
+
       <Button
         colorHover="var(--color-copy)"
         colorHoverDark="var(--color-copy-dark)"
@@ -37,6 +25,10 @@ import SelectBox from "../components/selectBox.astro";
           ></i></submit
         ></Button
       >
+      <SelectBox>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </SelectBox>
     </Form>
   </div>
 </section>

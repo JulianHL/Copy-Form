@@ -1,73 +1,32 @@
----
-const {
-  id = "",
-  placeholder = "",
-  required = false,
-  options = [],
-} = Astro.props;
----
+<div class="relative">
+  <select>
+    <button>
+      <selectedcontent></selectedcontent>
+    </button>
 
-<div class="grid grid-cols-1 gap-5 group focus-within:z-3">
-  <div>
-    <label
-      for=`selectBox${id}`
-      class="font-bold text-[20px] flex items-center capitalize w-fit"
+    <option
+      value="option1"
+      class="pointer-events-none rounded-full! shadow-[inset_0_5px_4px_var(--shadow-color),0_3px_2px_var(--light-color)] mb-5!"
     >
-      <span class="dark:text-dark!">{placeholder}</span>
-      {
-        required && (
-          <span class="flex items-center h-full">
-            <i class="fa-solid fa-asterisk text-[0.5em] before:text-[#ff757e]!" />
-          </span>
-        )
-      }
-    </label>
-  </div>
-
-  <div data-selectBox-container class="relative">
-    <div
-      class="dark:text-dark! bg-(--bg-color-light) dark:bg-(--bg-color-dark) grid-cols-1 gap-3 hidden group-focus-within:grid p-5! pt-25! absolute w-full z-1 rounded-4xl
-            shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)]
-            dark:shadow-[5px_5px_10px_var(--shadow-color-dark),-5px_-5px_10px_var(--light-color-dark)]"
+      Select an option <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 448 512"
+        class="h-[1em] icon-open"
+      >
+        <path
+          d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+        ></path></svg
+      ></option
     >
-      {
-        options.map((option: string) => {
-          const label = option;
-          return (
-            <div
-              data-drop-label
-              class=" dark:text-dark! p-5! dark:hover:shadow-[5px_5px_10px_var(--shadow-color-dark),-5px_-5px_10px_var(--light-color-dark)] hover:shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)] rounded-2xl cursor-pointer font-medium transition-all duration-300"
-            >
-              {label}
-            </div>
-          );
-        })
-      }
-    </div>
-    <div class="group-focus-within:p-5!">
-      <div class="relative">
-        <input
-          id=`selectBox${id}`
-          required={required}
-          placeholder=`Select ${placeholder} here...`
-          readonly
-          class="w-full rounded-full p-5! pr-12! transition-all duration-300 font-bold dark:text-dark! cursor-pointer appearance-none
-           shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)]
-           dark:shadow-[5px_5px_10px_var(--shadow-color-dark),-5px_-5px_10px_var(--light-color-dark)]
-           focus:shadow-[inset_0_5px_4px_var(--shadow-color),0_3px_2px_var(--light-color)]
-           dark:focus:shadow-[inset_0_5px_4px_var(--shadow-color-dark),inset_0_-3px_2px_var(--light-color-dark)] z-2 relative"
-        />
-
-        <i
-          class="fa-solid fa-chevron-down absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none dark:before:text-dark! group-focus-within:rotate-180 transition-all duration-300 z-2"
-        ></i>
-      </div>
-    </div>
-  </div>
+    <slot />
+  </select>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 448 512"
+    class="h-[1em] absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none icon"
+  >
+    <path
+      d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+    ></path></svg
+  >
 </div>
-
-<script>
-  import { updateMultipleSelectBox } from "../scripts/selectBoxScript";
-  const containers = document.querySelectorAll("[data-selectBox-container]");
-  updateMultipleSelectBox(containers);
-</script>
