@@ -1,32 +1,52 @@
-<div class="relative">
-  <select>
-    <button>
-      <selectedcontent></selectedcontent>
-    </button>
+---
+const { id = "", label = "", required = false } = Astro.props;
+---
 
-    <option
-      value="option1"
-      class="pointer-events-none rounded-full! shadow-[inset_0_5px_4px_var(--shadow-color),0_3px_2px_var(--light-color)] mb-5!"
-    >
-      Select an option <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 448 512"
-        class="h-[1em] icon-open"
+<div class="grid grid-cols-1 gap-5 z-0">
+  <div>
+    <label for={id} class="font-bold text-[20px] flex items-center capitalize">
+      <span class="dark:text-dark!">{label}</span>
+      {
+        required && (
+          <span class="flex items-center h-full">
+            <i class="fa-solid fa-asterisk text-[0.5em] before:text-[#ff757e]!" />
+          </span>
+        )
+      }
+    </label>
+  </div>
+
+  <div class="relative">
+    <select id={id} required={required}>
+      <button>
+        <selectedcontent class="dark:text-dark!"></selectedcontent>
+      </button>
+
+      <option
+        value=""
+        disabled
+        class="pointer-events-none rounded-full! shadow-[inset_0_5px_4px_var(--shadow-color),0_3px_2px_var(--light-color)] dark:shadow-[inset_0_5px_4px_var(--shadow-color-dark),0_3px_2px_var(--light-color-dark)] mb-5!"
       >
-        <path
-          d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
-        ></path></svg
-      ></option
+        Select an option <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"
+          class="h-[1em] icon-open"
+        >
+          <path
+            d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+          ></path></svg
+        ></option
+      >
+      <slot />
+    </select>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 448 512"
+      class="h-[1em] absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none icon"
     >
-    <slot />
-  </select>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 448 512"
-    class="h-[1em] absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none icon"
-  >
-    <path
-      d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
-    ></path></svg
-  >
+      <path
+        d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+      ></path></svg
+    >
+  </div>
 </div>

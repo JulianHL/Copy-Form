@@ -3,12 +3,49 @@ import Form from "../components/form.astro";
 import GeneralInput from "../components/generalInput.astro";
 import Button from "../components/button.astro";
 import SelectBox from "../components/selectBox.astro";
+import Choice from "../components/choice.astro";
 ---
 
 <section class="flex justify-center">
   <div class="w-[60%] h-screen">
     <Form>
-      <GeneralInput placeholder="example" required={true} />
+      <input
+        type="radio"
+        id="radioYes"
+        name="radioGroup"
+        value="Yes"
+        class="peer/a hidden"
+      />
+      <input
+        type="radio"
+        id="radioNo"
+        name="radioGroup"
+        value="No"
+        class="peer/b hidden"
+      />
+
+      <SelectBox id="slectBox1" label="example" required={true}>
+        <label for="radioYes" class="w-full h-full"
+          ><option value="Yes">Yes</option></label
+        >
+        <label for="radioNo" class="w-full h-full"
+          ><option selected value="No">No</option></label
+        >
+      </SelectBox>
+
+      <div class="hidden peer-checked/a:block">
+        <GeneralInput placeholder="Another example" required={false} />
+      </div>
+      <GeneralInput placeholder="Another example" required={false} />
+      <GeneralInput placeholder="Another example" required={false} />
+      <GeneralInput placeholder="Another example" required={false} />
+      <GeneralInput placeholder="Another example" required={false} />
+      <GeneralInput placeholder="Another example" required={false} />
+      <GeneralInput placeholder="Another example" required={false} />
+      <Choice>
+        <span class="dark:text-dark!">Rental</span>
+        <input type="checkbox" class="hidden" checked />
+      </Choice>
 
       <Button
         colorHover="var(--color-copy)"
@@ -25,10 +62,6 @@ import SelectBox from "../components/selectBox.astro";
           ></i></submit
         ></Button
       >
-      <SelectBox>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </SelectBox>
     </Form>
   </div>
 </section>
