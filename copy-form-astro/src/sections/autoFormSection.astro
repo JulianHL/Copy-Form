@@ -1,0 +1,38 @@
+---
+import Button from "../components/button.astro";
+import AutoFormImputsSection from "./autoFormImputsSection.astro";
+---
+
+<section class="flex justify-center">
+  <div class="w-[60%] h-screen">
+    <form class="w-full grid grid-cols-1 gap-40 p-10!">
+      <AutoFormImputsSection />
+      <div class="flex gap-10 -mt-20!">
+        <div class="w-60 h-20">
+          <Button
+            id="copyButton"
+            colorHover="var(--color-copy)"
+            colorHoverDark="var(--color-copy-dark)"
+            ><submit id="copy-button" class="dark:text-dark!"
+              >Copy <i class="fa-solid fa-copy dark:before:text-dark!"
+              ></i></submit
+            ></Button
+          >
+        </div>
+
+        <div class="w-60 h-20">
+          <Button
+            id="clearButton"
+            type="reset"
+            colorHover="var(--color-delete)"
+            colorHoverDark="var(--color-delete-dark)"
+            ><span id="clear-button" class="dark:text-dark!"
+              >Clear <i class="fa-solid fa-trash-can dark:before:text-dark!"
+              ></i></span
+            ></Button
+          >
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

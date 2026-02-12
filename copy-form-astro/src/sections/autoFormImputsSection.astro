@@ -1,0 +1,459 @@
+---
+import TelInput from "../components/telInput.astro";
+import EmailInput from "../components/emailInput.astro";
+import GeneralInput from "../components/generalInput.astro";
+import SelectBox from "../components/selectBox.astro";
+import DateInput from "../components/dateInput.astro";
+---
+
+<div class="grid grid-cols-1 gap-10">
+  <TelInput id="telBoxAuto" placeholder="phone number" required={true} />
+  <EmailInput id="emailBoxAuto" placeholder="email address" required={true} />
+  <GeneralInput
+    id="generalBoxAutoVehicle"
+    placeholder="vehicle"
+    required={true}
+  />
+
+  <GeneralInput
+    id="generalBoxAutoColor"
+    placeholder="vehicle color"
+    required={true}
+  />
+  <GeneralInput
+    id="generalBoxAutoPlate"
+    placeholder="vehicle plate #"
+    required={true}
+  />
+  <SelectBox id="slectBoxAutoInjuries" label="Injuries" required={true}>
+    <label for="radioInjuriesNo" class="w-full h-full"
+      ><option value="No">No</option></label
+    >
+    <label for="radioInjuriesYes" class="w-full h-full"
+      ><option value="Yes">Yes</option></label
+    >
+  </SelectBox>
+  <input
+    type="radio"
+    id="radioInjuriesYes"
+    name="radioGroupInjuries"
+    value="Yes"
+    class="peer/injuries hidden"
+  />
+  <input
+    type="radio"
+    id="radioInjuriesNo"
+    name="radioGroupInjuries"
+    value="No"
+    class="hidden"
+  />
+  <div class="peer-checked/injuries:block hidden">
+    <SelectBox
+      id="slectBoxAutoAB"
+      label="Accident Benefits (A/B)"
+      required={true}
+    >
+      <label for="radioABNo" class="w-full h-full"
+        ><option value="No">No</option></label
+      >
+      <label for="radioABYes" class="w-full h-full"
+        ><option value="Yes">Yes</option></label
+      >
+    </SelectBox>
+  </div>
+  <GeneralInput
+    id="generalBoxAutoCurrentLocation"
+    placeholder="current vehicle location"
+    required={false}
+  />
+</div>
+
+<div class="grid grid-cols-1 gap-10">
+  <SelectBox
+    id="slectBoxAutoCommercial"
+    label="vehicle used for any commercial purposes?"
+    required={true}
+  >
+    <label for="radioCommercialNo" class="w-full h-full"
+      ><option value="No">No</option></label
+    >
+    <label for="radioCommercialYes" class="w-full h-full"
+      ><option value="Yes">Yes</option></label
+    >
+  </SelectBox>
+  <SelectBox
+    id="slectBoxAutoDashCam"
+    label="any dash camera footage?"
+    required={true}
+  >
+    <label for="radioDashNo" class="w-full h-full"
+      ><option value="No">No</option></label
+    >
+    <label for="radioDashYes" class="w-full h-full"
+      ><option value="Yes">Yes</option></label
+    >
+  </SelectBox>
+  <SelectBox id="slectBoxAutoWitness" label="any witness?" required={true}>
+    <label for="radioWitnessNo" class="w-full h-full"
+      ><option value="No">No</option></label
+    >
+    <label for="radioWitnessYes" class="w-full h-full"
+      ><option value="Yes">Yes</option></label
+    >
+  </SelectBox>
+  <input
+    type="radio"
+    id="radioWitnessYes"
+    name="radioGroupWitness"
+    value="Yes"
+    class="peer/witness hidden"
+  />
+  <input
+    type="radio"
+    id="radioWitnessNo"
+    name="radioGroupWitness"
+    value="No"
+    class="hidden"
+  />
+  <div class="peer-checked/witness:grid grid-cols-1 gap-10 hidden">
+    <GeneralInput
+      id="generalBoxAutoWitnessName"
+      placeholder="witness name"
+      required={false}
+    />
+    <TelInput
+      id="telBoxAutoWitness"
+      placeholder="witness phone number"
+      required={false}
+    />
+  </div>
+
+  <SelectBox id="slectBoxAuto6" label="baby seats?" required={true}>
+    <label for="radioSeatsNo" class="w-full h-full"
+      ><option value="No">No</option></label
+    >
+    <label for="radioSeatsYes" class="w-full h-full"
+      ><option value="Yes">Yes</option></label
+    >
+  </SelectBox>
+
+  <SelectBox
+    id="slectBoxAutoDrugs"
+    label="alcohol, medication or drugs?"
+    required={true}
+  >
+    <label for="radioDrugsNo" class="w-full h-full"
+      ><option value="No">No</option></label
+    >
+    <label for="radioDrugsYes" class="w-full h-full"
+      ><option value="Yes">Yes</option></label
+    >
+  </SelectBox>
+
+  <SelectBox
+    id="slectBoxAutoRestriction"
+    label="any license restrictions?"
+    required={true}
+  >
+    <label for="radioRestrictionNo" class="w-full h-full"
+      ><option value="No">No</option></label
+    >
+    <label for="radioRestrictionYes" class="w-full h-full"
+      ><option value="Yes">Yes</option></label
+    >
+  </SelectBox>
+  <input
+    type="radio"
+    id="radioRestrictionYes"
+    name="radioGroupRestriction"
+    value="Yes"
+    class="peer/restriction hidden"
+  />
+  <input
+    type="radio"
+    id="radioRestrictionNo"
+    name="radioGroupRestriction"
+    value="No"
+    class="hidden"
+  />
+
+  <div class="peer-checked/restriction:block hidden">
+    <GeneralInput
+      id="generalBoxAutoRestriction"
+      placeholder="restrictions"
+      required={true}
+    />
+  </div>
+
+  <div class="grid grid-cols-1 gap-10">
+    <SelectBox
+      id="slectBoxAutoDevice"
+      label="anti-theft device?"
+      required={true}
+    >
+      <label for="radioDeviceNo" class="w-full h-full"
+        ><option value="No">No</option></label
+      >
+      <label for="radioDeviceYes" class="w-full h-full"
+        ><option value="Yes">Yes</option></label
+      >
+    </SelectBox>
+  </div>
+
+  <SelectBox id="slectBoxAutoThirdParty" label="third party?" required={true}>
+    <label for="radioThirdPartyNo" class="w-full h-full"
+      ><option value="No">No</option></label
+    >
+
+    <label for="radioThirdPartyYes" class="w-full h-full"
+      ><option value="Yes">Yes</option></label
+    >
+  </SelectBox>
+  <input
+    type="radio"
+    id="radioThirdPartyYes"
+    name="radioGroupThirdParty"
+    value="Yes"
+    class="peer/third-party hidden"
+  />
+  <input
+    type="radio"
+    id="radioThirdPartyNo"
+    name="radioGroupThirdParty"
+    value="No"
+    class="hidden"
+  />
+  <div class="peer-checked/third-party:grid grid-cols-1 gap-10 hidden">
+    <GeneralInput
+      id="generalBoxAutoThirdPartyName"
+      placeholder="third party name"
+      required={false}
+    />
+    <TelInput
+      id="generalBoxAutoThirdPartyTel"
+      placeholder="third party phone number"
+      required={false}
+    />
+    <GeneralInput
+      id="generalBoxAutoThirdPartyLicense"
+      placeholder="third party license #"
+      required={false}
+    />
+    <GeneralInput
+      id="generalBoxAutoThirdPartyInsurance"
+      placeholder="third party insurance"
+      required={false}
+    />
+    <GeneralInput
+      id="generalBoxAutoThirdPartyInsurancePolicy"
+      placeholder="third party insurance policy #"
+      required={false}
+    />
+    <GeneralInput
+      id="generalBoxAutoThirdPartyVehicle"
+      placeholder="third party vehicle"
+      required={false}
+    />
+    <GeneralInput
+      id="generalBoxAutoThirdPartyVehicleColor"
+      placeholder="third party vehicle color"
+      required={false}
+    />
+    <GeneralInput
+      id="generalBoxAutoThirdPartyVehiclePlate"
+      placeholder="third party vehicle plate #"
+      required={false}
+    />
+  </div>
+  <SelectBox id="slectBoxAutoPolice" label="Police reported?" required={true}>
+    <label for="radioPoliceNo" class="w-full h-full"
+      ><option value="No">No</option></label
+    >
+
+    <label for="radioPoliceYes" class="w-full h-full"
+      ><option value="Yes">Yes</option></label
+    >
+  </SelectBox>
+  <input
+    type="radio"
+    id="radioPoliceYes"
+    name="radioGroupPolice"
+    value="Yes"
+    class="peer/police hidden"
+  />
+  <input
+    type="radio"
+    id="radioPoliceNo"
+    name="radioGroupPolice"
+    value="No"
+    class="hidden"
+  />
+  <div class="peer-checked/police:grid grid-cols-1 gap-10 hidden">
+    <GeneralInput
+      id="generalBoxAutoPoliceReport"
+      placeholder="police report #"
+      required={false}
+    />
+    <GeneralInput
+      id="generalBoxAutoPoliceBadge"
+      placeholder="police badge #"
+      required={false}
+    />
+    <GeneralInput
+      id="generalBoxAutoPoliceContact"
+      placeholder="police contact info"
+      required={false}
+    />
+    <GeneralInput
+      id="generalBoxAutoPoliceCity"
+      placeholder="jurisdiction city"
+      required={false}
+    />
+  </div>
+</div>
+
+<GeneralInput
+  id="generalBoxAutoADJ"
+  placeholder="Claim assigned to ADJ"
+  required={false}
+/>
+
+<div class="grid grid-cols-1 gap-10">
+  <SelectBox id="slectBoxAutoService" label="Services offered?" required={true}>
+    <label for="radioServiceYes" class="w-full h-full"
+      ><option value="Yes">Yes</option></label
+    >
+    <label for="radioServiceNo" class="w-full h-full"
+      ><option value="No">No</option></label
+    >
+  </SelectBox>
+  <input
+    type="radio"
+    id="radioServiceYes"
+    name="radioGroupService"
+    value="Yes"
+    checked
+    class="peer/service hidden"
+  />
+  <input
+    type="radio"
+    id="radioServiceNo"
+    name="radioGroupService"
+    value="No"
+    class="peer/noService hidden"
+  />
+  <div class="peer-checked/noService:block hidden">
+    <GeneralInput
+      id="generalBoxAutoNoServiceReason"
+      placeholder="reason for no services offered"
+      required={true}
+    />
+  </div>
+  <div class="peer-checked/service:grid grid-cols-1 gap-10 hidden">
+    <input
+      type="checkbox"
+      id="checkboxBodyShop"
+      checked
+      class="peer/bodyshop hidden"
+    />
+    <div
+      class="h-20 dark:shadow-[0.5rem_0.5rem_1rem_var(--shadow-color-dark),-0.5rem_-0.5rem_1rem_var(--light-color-dark)] peer-checked/bodyshop:dark:shadow-[inset_0_5px_4px_var(--shadow-color-dark),0_3px_2px_var(--light-color-dark)] shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)] peer-checked/bodyshop:shadow-[inset_0_5px_4px_var(--shadow-color),0_3px_2px_var(--light-color)] rounded-2xl"
+    >
+      <label
+        for="checkboxBodyShop"
+        class="h-full w-full flex items-center font-bold p-5! relative cursor-pointer"
+      >
+        <span class="dark:text-dark!">Preferred Body Shop</span>
+      </label>
+    </div>
+    <input type="checkbox" id="checkboxTow" class="peer/tow hidden" />
+    <div
+      class="h-20 dark:shadow-[0.5rem_0.5rem_1rem_var(--shadow-color-dark),-0.5rem_-0.5rem_1rem_var(--light-color-dark)] peer-checked/tow:dark:shadow-[inset_0_5px_4px_var(--shadow-color-dark),0_3px_2px_var(--light-color-dark)] shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)] peer-checked/tow:shadow-[inset_0_5px_4px_var(--shadow-color),0_3px_2px_var(--light-color)] rounded-2xl"
+    >
+      <label
+        for="checkboxTow"
+        class="h-full w-full flex items-center font-bold p-5! relative cursor-pointer"
+      >
+        <span class="dark:text-dark!">Tow Assistance</span>
+      </label>
+    </div>
+    <input type="checkbox" id="checkboxRental" class="peer/rental hidden" />
+    <div
+      class="h-20 dark:shadow-[0.5rem_0.5rem_1rem_var(--shadow-color-dark),-0.5rem_-0.5rem_1rem_var(--light-color-dark)] peer-checked/rental:dark:shadow-[inset_0_5px_4px_var(--shadow-color-dark),0_3px_2px_var(--light-color-dark)] shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)] peer-checked/rental:shadow-[inset_0_5px_4px_var(--shadow-color),0_3px_2px_var(--light-color)] rounded-2xl"
+    >
+      <label
+        for="checkboxRental"
+        class="h-full w-full flex items-center font-bold p-5! relative cursor-pointer"
+      >
+        <span class="dark:text-dark!">Rental</span>
+      </label>
+    </div>
+    <div class="peer-checked/bodyshop:grid grid-cols-1 gap-10 hidden">
+      <SelectBox
+        id="slectBoxBodyShopAccepted"
+        label="Body shop accepted?"
+        required={true}
+      >
+        <label for="radioBodyShopYes" class="w-full h-full"
+          ><option value="Yes">Yes</option></label
+        >
+        <label for="radioBodyShopNo" class="w-full h-full"
+          ><option value="No">No</option></label
+        >
+      </SelectBox>
+      <input
+        type="radio"
+        id="radioBodyShopYes"
+        name="radioGroupBodyShop"
+        value="Yes"
+        checked
+        class="peer/bodyshopAccepted hidden"
+      />
+      <input
+        type="radio"
+        id="radioBodyShopNo"
+        name="radioGroupBodyShop"
+        value="No"
+        class="peer/bodyshopRejected hidden"
+      />
+      <div class="peer-checked/bodyshopRejected:block hidden">
+        <GeneralInput
+          id="generalBoxBodyShopRejection"
+          placeholder="reason for body shop rejection"
+          required={true}
+        />
+      </div>
+      <div class="peer-checked/bodyshopAccepted:block hidden">
+        <DateInput
+          id="dateBoxBodyShopAppointment"
+          placeholder="body shop appointment date"
+          required={true}
+        />
+      </div>
+    </div>
+    <div class="peer-checked/tow:grid grid-cols-1 gap-10 hidden">
+      <GeneralInput
+        id="generalBoxTowAgent"
+        placeholder="tow agent name"
+        required={true}
+      />
+      <GeneralInput
+        id="generalBoxTowCompany"
+        placeholder="tow company name"
+        required={true}
+      />
+      <TelInput
+        id="telBoxTowCompany"
+        placeholder="tow company phone number"
+        required={true}
+      />
+    </div>
+    <div class="peer-checked/rental:grid grid-cols-1 gap-10 hidden">
+      <GeneralInput
+        id="generalBoxRentalLocation"
+        placeholder="rental company location"
+        required={true}
+      />
+    </div>
+  </div>
+</div>

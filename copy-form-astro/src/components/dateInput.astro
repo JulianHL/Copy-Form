@@ -21,13 +21,13 @@ const { id = "", placeholder = "", required = false } = Astro.props;
 
   <input
     id=`${id}`
-    type="text"
+    type="date"
     placeholder=`Type ${placeholder} here...`
     required={required}
     class="w-full rounded-full p-5! transition-all duration-300 font-bold dark:text-dark!
          shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)]
          dark:shadow-[5px_5px_10px_var(--shadow-color-dark),-5px_-5px_10px_var(--light-color-dark)]
          focus:shadow-[inset_0_5px_4px_var(--shadow-color),0_3px_2px_var(--light-color)]
-         dark:focus:shadow-[inset_0_5px_4px_var(--shadow-color-dark),inset_0_-3px_2px_var(--light-color-dark)]"
+         dark:focus:shadow-[inset_0_5px_4px_var(--shadow-color-dark),inset_0_-3px_2px_var(--light-color-dark)] cursor-pointer"
   />
 </div>

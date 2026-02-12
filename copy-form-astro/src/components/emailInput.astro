@@ -21,9 +21,10 @@ const { id = "", placeholder = "", required = false } = Astro.props;
 
   <input
     id=`${id}`
-    type="text"
+    type="email"
     placeholder=`Type ${placeholder} here...`
     required={required}
+    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
     class="w-full rounded-full p-5! transition-all duration-300 font-bold dark:text-dark!
          shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)]
          dark:shadow-[5px_5px_10px_var(--shadow-color-dark),-5px_-5px_10px_var(--light-color-dark)]
