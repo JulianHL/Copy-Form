@@ -180,6 +180,7 @@ import DateInput from "../components/dateInput.astro";
   <div class="peer-checked/restriction:block hidden">
     <GeneralInput
       id="generalBoxAutoRestriction"
+      name="restrictions"
       placeholder="restrictions"
       required={true}
     />
@@ -226,6 +227,7 @@ import DateInput from "../components/dateInput.astro";
   <div class="peer-checked/third-party:grid grid-cols-1 gap-10 hidden">
     <GeneralInput
       id="generalBoxAutoThirdPartyName"
+      name="thirdPartyName"
       placeholder="third party name"
       required={false}
     />
@@ -315,7 +317,7 @@ import DateInput from "../components/dateInput.astro";
 <GeneralInput
   id="generalBoxAutoADJ"
   placeholder="Claim assigned to ADJ"
-  required={false}
+  required={true}
 />
 
 <div class="grid grid-cols-1 gap-10">
@@ -431,7 +433,10 @@ import DateInput from "../components/dateInput.astro";
         />
       </div>
     </div>
-    <div class="peer-checked/tow:grid grid-cols-1 gap-10 hidden">
+    <div
+      id="towInputsContainer"
+      class="peer-checked/tow:grid grid-cols-1 gap-10 hidden"
+    >
       <GeneralInput
         id="generalBoxTowAgent"
         placeholder="tow agent name"
@@ -452,6 +457,27 @@ import DateInput from "../components/dateInput.astro";
       <GeneralInput
         id="generalBoxRentalLocation"
         placeholder="rental company location"
+        required={true}
+      />
+    </div>
+    <div class="peer-checked/bodyshop:hidden block">
+      <GeneralInput
+        id="generalBoxAutoShopRejectedReason"
+        placeholder="reason for Body shop rejection"
+        required={true}
+      />
+    </div>
+    <div class="peer-checked/tow:hidden block">
+      <GeneralInput
+        id="generalBoxAutoTowRejectedReason"
+        placeholder="reason for tow rejection"
+        required={true}
+      />
+    </div>
+    <div class="peer-checked/rental:hidden block">
+      <GeneralInput
+        id="generalBoxAutoRentalRejectedReason"
+        placeholder="reason for rental rejection"
         required={true}
       />
     </div>

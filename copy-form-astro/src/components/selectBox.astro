@@ -17,7 +17,7 @@ const { id = "", label = "", required = false } = Astro.props;
   </div>
 
   <div class="relative">
-    <select id={id} required={required}>
+    <select id={id} name={id} required={required} data-required={required}>
       <button>
         <selectedcontent class="dark:text-dark!"></selectedcontent>
       </button>

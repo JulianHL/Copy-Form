@@ -1,5 +1,6 @@
 ---
 const { id = "", placeholder = "", required = false } = Astro.props;
+const phonePattern = String.raw`(?=(\D*\d){10,11})[\+0-9 \(\)\-]{10,20}`;
 ---
 
 <div class="grid grid-cols-1 gap-5">
@@ -20,15 +21,30 @@ const { id = "", placeholder = "", required = false } = Astro.props;
   </div>
 
   <input
-    id=`${id}`
+    id={id}
     type="tel"
+    name={id}
+    data-required={required}
     placeholder=`Type ${placeholder} here...`
-    required={required}
-    pattern="[0-9+\-\s()]{7,20}"
+    pattern={phonePattern}
     class="w-full rounded-full p-5! transition-all duration-300 font-bold dark:text-dark!
-         shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)]
-         dark:shadow-[5px_5px_10px_var(--shadow-color-dark),-5px_-5px_10px_var(--light-color-dark)]
-         focus:shadow-[inset_0_5px_4px_var(--shadow-color),0_3px_2px_var(--light-color)]
-         dark:focus:shadow-[inset_0_5px_4px_var(--shadow-color-dark),inset_0_-3px_2px_var(--light-color-dark)]"
+    shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)] dark:shadow-[5px_5px_10px_var(--shadow-color-dark),-5px_-5px_10px_var(--light-color-dark)]
+    focus:shadow-[inset_0_5px_4px_var(--shadow-color),0_3px_2px_var(--light-color)]
+    dark:focus:shadow-[inset_0_5px_4px_var(--shadow-color-dark),inset_0_-3px_2px_var(--light-color-dark)]"
   />
 </div>
+
+<script>
+  const telInputs = document.querySelectorAll(
+    "input[type='tel']",
+  ) as NodeListOf<HTMLInputElement>;
+
+  telInputs.forEach((input) => {
+    input.addEventListener("blur", () => {
+      let numbers = input.value.replace(/\D/g, "");
+      if (numbers.length > 7) {
+        input.value = `${numbers.slice(0, -10)} (${numbers.slice(-10, -7)}) ${numbers.slice(-7, -4)}-${numbers.slice(-4)}`;
+      }
+    });
+  });
+</script>

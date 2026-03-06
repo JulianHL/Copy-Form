@@ -1,29 +1,3 @@
----
-import Button from "./button.astro";
----
-
-<form class="w-full grid grid-cols-1 gap-40 p-10!">
+<form class="w-full grid grid-cols-1 gap-10 p-10!">
   <slot />
-  <div class="flex gap-10">
-    <div class="w-60 h-20">
-      <Button
-        colorHover="var(--color-copy)"
-        colorHoverDark="var(--color-copy-dark)"
-        ><submit id="copy-button" class="dark:text-dark!"
-          >Copy <i class="fa-solid fa-copy dark:before:text-dark!"></i></submit
-        ></Button
-      >
-    </div>
-
-    <div class="w-60 h-20">
-      <Button
-        colorHover="var(--color-delete)"
-        colorHoverDark="var(--color-delete-dark)"
-        ><submit id="clear-button" class="dark:text-dark!"
-          >Clear <i class="fa-solid fa-trash-can dark:before:text-dark!"
-          ></i></submit
-        ></Button
-      >
-    </div>
-  </div>
 </form>
