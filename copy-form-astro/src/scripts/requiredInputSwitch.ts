@@ -8,8 +8,7 @@ export function requiredInputSwitch() {
     inputs.forEach((input) => {
         if (input.dataset.required === "true") {
             const isHidden = isElementHidden(input);
-            input.required = !isHidden;
-            console.log(input.name, "hidden?", input.closest(".hidden") !== null, "required?", input.required, " const = ", isHidden) 
+            input.required = !isHidden; 
         }
 
     })

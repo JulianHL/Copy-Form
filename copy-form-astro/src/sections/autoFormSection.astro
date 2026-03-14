@@ -40,6 +40,7 @@ import AutoFormImputsSection from "./autoFormImputsSection.astro";
 
 <script>
   import { requiredInputSwitch } from "../scripts/requiredInputSwitch";
+  import { autoFormater } from "../scripts/autoFormater";
 
   const form = document.getElementById("autoForm") as HTMLFormElement;
   const copyButton = document.getElementById("copyButton") as HTMLElement;
@@ -53,6 +54,9 @@ import AutoFormImputsSection from "./autoFormImputsSection.astro";
   form.addEventListener("submit", (e) => {
     console.log("sent");
     e.preventDefault();
+    const data = new FormData(form);
+    const finalFormat = autoFormater(data);
+    console.log(finalFormat);
   });
 
   copyButton.addEventListener("click", (e) => {

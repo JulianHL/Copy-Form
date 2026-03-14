@@ -41,9 +41,14 @@ const phonePattern = String.raw`(?=(\D*\d){10,11})[\+0-9 \(\)\-]{10,20}`;
 
   telInputs.forEach((input) => {
     input.addEventListener("blur", () => {
-      let numbers = input.value.replace(/\D/g, "");
+      let numbers = input.value.replace(/[^\d+]/g, "");
       if (numbers.length > 7) {
-        input.value = `${numbers.slice(0, -10)} (${numbers.slice(-10, -7)}) ${numbers.slice(-7, -4)}-${numbers.slice(-4)}`;
+        const countryCode = numbers.slice(0, -10);
+        const areaCode = numbers.slice(-10, -7);
+        const first = numbers.slice(-7, -4);
+        const last = numbers.slice(-4);
+
+        input.value = `${countryCode ? countryCode + " " : ""}(${areaCode}) ${first}-${last}`;
       }
     });
   });

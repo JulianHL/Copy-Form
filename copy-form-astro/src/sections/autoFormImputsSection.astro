@@ -4,25 +4,28 @@ import EmailInput from "../components/emailInput.astro";
 import GeneralInput from "../components/generalInput.astro";
 import SelectBox from "../components/selectBox.astro";
 import DateInput from "../components/dateInput.astro";
+import TimeInput from "../components/timeInput.astro";
 ---
 
 <div class="grid grid-cols-1 gap-10">
   <TelInput id="telBoxAuto" placeholder="phone number" required={true} />
-  <EmailInput id="emailBoxAuto" placeholder="email address" required={true} />
+  <EmailInput id="emailBoxAuto" placeholder="email address" required={false} />
   <GeneralInput
     id="generalBoxAutoVehicle"
     placeholder="vehicle"
+    capitalized={true}
     required={true}
   />
-
   <GeneralInput
     id="generalBoxAutoColor"
     placeholder="vehicle color"
+    capitalized={true}
     required={true}
   />
   <GeneralInput
     id="generalBoxAutoPlate"
     placeholder="vehicle plate #"
+    capitalized={true}
     required={true}
   />
   <SelectBox id="slectBoxAutoInjuries" label="Injuries" required={true}>
@@ -61,10 +64,28 @@ import DateInput from "../components/dateInput.astro";
       >
     </SelectBox>
   </div>
+
+  <SelectBox
+    id="slectBoxAutoLocation"
+    label="current vehicle location"
+    required={true}
+  >
+    <option value="Scene of the accident">Scene of the accident</option>
+
+    <option value="Insured's address">Insured's address</option>
+
+    <option value="Repair Shop">Repair shop</option>
+
+    <option value="Tow yard">Tow yard</option>
+
+    <option value="Collision Center">Collision center</option>
+
+    <option value="Other">Other</option>
+  </SelectBox>
   <GeneralInput
     id="generalBoxAutoCurrentLocation"
-    placeholder="current vehicle location"
-    required={false}
+    placeholder="current vehicle location address"
+    required={true}
   />
 </div>
 
@@ -128,7 +149,7 @@ import DateInput from "../components/dateInput.astro";
     />
   </div>
 
-  <SelectBox id="slectBoxAuto6" label="baby seats?" required={true}>
+  <SelectBox id="slectBoxAutoSeats" label="baby seats?" required={true}>
     <label for="radioSeatsNo" class="w-full h-full"
       ><option value="No">No</option></label
     >
@@ -201,7 +222,7 @@ import DateInput from "../components/dateInput.astro";
     </SelectBox>
   </div>
 
-  <SelectBox id="slectBoxAutoThirdParty" label="third party?" required={true}>
+  <SelectBox id="slectBoxAutoThirdParty" label="third-party?" required={true}>
     <label for="radioThirdPartyNo" class="w-full h-full"
       ><option value="No">No</option></label
     >
@@ -224,46 +245,61 @@ import DateInput from "../components/dateInput.astro";
     value="No"
     class="hidden"
   />
+  <div class="peer-checked/third-party:hidden block">
+    <GeneralInput
+      id="generalBoxAutoThirdPartyReason"
+      name="thirdPartyReason"
+      placeholder="reason for excluding third-party"
+      required={true}
+    />
+  </div>
   <div class="peer-checked/third-party:grid grid-cols-1 gap-10 hidden">
     <GeneralInput
       id="generalBoxAutoThirdPartyName"
       name="thirdPartyName"
-      placeholder="third party name"
+      placeholder="third-party name"
+      capitalized={true}
       required={false}
     />
     <TelInput
       id="generalBoxAutoThirdPartyTel"
-      placeholder="third party phone number"
+      placeholder="third-party phone number"
       required={false}
     />
     <GeneralInput
       id="generalBoxAutoThirdPartyLicense"
-      placeholder="third party license #"
+      placeholder="third-party license #"
+      capitalized={true}
       required={false}
     />
     <GeneralInput
       id="generalBoxAutoThirdPartyInsurance"
-      placeholder="third party insurance"
+      placeholder="third-party insurance"
+      capitalized={true}
       required={false}
     />
     <GeneralInput
       id="generalBoxAutoThirdPartyInsurancePolicy"
-      placeholder="third party insurance policy #"
+      placeholder="third-party insurance policy #"
+      capitalized={true}
       required={false}
     />
     <GeneralInput
       id="generalBoxAutoThirdPartyVehicle"
-      placeholder="third party vehicle"
+      placeholder="third-party vehicle"
+      capitalized={true}
       required={false}
     />
     <GeneralInput
       id="generalBoxAutoThirdPartyVehicleColor"
-      placeholder="third party vehicle color"
+      placeholder="third-party vehicle color"
+      capitalized={true}
       required={false}
     />
     <GeneralInput
       id="generalBoxAutoThirdPartyVehiclePlate"
-      placeholder="third party vehicle plate #"
+      placeholder="third-party vehicle plate #"
+      capitalized={true}
       required={false}
     />
   </div>
@@ -301,7 +337,7 @@ import DateInput from "../components/dateInput.astro";
       placeholder="police badge #"
       required={false}
     />
-    <GeneralInput
+    <TelInput
       id="generalBoxAutoPoliceContact"
       placeholder="police contact info"
       required={false}
@@ -355,6 +391,7 @@ import DateInput from "../components/dateInput.astro";
     <input
       type="checkbox"
       id="checkboxBodyShop"
+      name="checkboxBodyShop"
       checked
       class="peer/bodyshop hidden"
     />
@@ -368,7 +405,12 @@ import DateInput from "../components/dateInput.astro";
         <span class="dark:text-dark!">Preferred Body Shop</span>
       </label>
     </div>
-    <input type="checkbox" id="checkboxTow" class="peer/tow hidden" />
+    <input
+      type="checkbox"
+      id="checkboxTow"
+      name="checkboxTow"
+      class="peer/tow hidden"
+    />
     <div
       class="h-20 dark:shadow-[0.5rem_0.5rem_1rem_var(--shadow-color-dark),-0.5rem_-0.5rem_1rem_var(--light-color-dark)] peer-checked/tow:dark:shadow-[inset_0_5px_4px_var(--shadow-color-dark),0_3px_2px_var(--light-color-dark)] shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)] peer-checked/tow:shadow-[inset_0_5px_4px_var(--shadow-color),0_3px_2px_var(--light-color)] rounded-2xl"
     >
@@ -379,7 +421,12 @@ import DateInput from "../components/dateInput.astro";
         <span class="dark:text-dark!">Tow Assistance</span>
       </label>
     </div>
-    <input type="checkbox" id="checkboxRental" class="peer/rental hidden" />
+    <input
+      type="checkbox"
+      id="checkboxRental"
+      name="checkboxRental"
+      class="peer/rental hidden"
+    />
     <div
       class="h-20 dark:shadow-[0.5rem_0.5rem_1rem_var(--shadow-color-dark),-0.5rem_-0.5rem_1rem_var(--light-color-dark)] peer-checked/rental:dark:shadow-[inset_0_5px_4px_var(--shadow-color-dark),0_3px_2px_var(--light-color-dark)] shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)] peer-checked/rental:shadow-[inset_0_5px_4px_var(--shadow-color),0_3px_2px_var(--light-color)] rounded-2xl"
     >
@@ -420,15 +467,20 @@ import DateInput from "../components/dateInput.astro";
       />
       <div class="peer-checked/bodyshopRejected:block hidden">
         <GeneralInput
-          id="generalBoxBodyShopRejection"
-          placeholder="reason for body shop rejection"
+          id="generalBoxAutoShopRejectedReasonOffered"
+          placeholder="reason for Body shop rejection"
           required={true}
         />
       </div>
-      <div class="peer-checked/bodyshopAccepted:block hidden">
+      <div class="peer-checked/bodyshopAccepted:grid grid-cols-2 gap-5 hidden">
         <DateInput
           id="dateBoxBodyShopAppointment"
-          placeholder="body shop appointment date"
+          placeholder="date"
+          required={true}
+        />
+        <TimeInput
+          id="timeBoxBodyShopAppointment"
+          placeholder="time"
           required={true}
         />
       </div>
@@ -443,13 +495,14 @@ import DateInput from "../components/dateInput.astro";
         required={true}
       />
       <GeneralInput
-        id="generalBoxTowCompany"
-        placeholder="tow company name"
+        id="generalBoxTowDestination"
+        placeholder="tow destination (drop off)"
         required={true}
       />
-      <TelInput
-        id="telBoxTowCompany"
-        placeholder="tow company phone number"
+      <TelInput id="telBoxTow" placeholder="tow phone number" required={true} />
+      <GeneralInput
+        id="generalBoxTowKeys"
+        placeholder="Where are the vehicle keys?"
         required={true}
       />
     </div>

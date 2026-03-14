@@ -22,7 +22,7 @@ const { id = "", placeholder = "", required = false } = Astro.props;
   <input
     id={id}
     name={id}
-    type="email"
+    type="time"
     placeholder=`Type ${placeholder} here...`
     required={required}
     data-required={required}
@@ -30,6 +30,6 @@ const { id = "", placeholder = "", required = false } = Astro.props;
          shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)]
          dark:shadow-[5px_5px_10px_var(--shadow-color-dark),-5px_-5px_10px_var(--light-color-dark)]
          focus:shadow-[inset_0_5px_4px_var(--shadow-color),0_3px_2px_var(--light-color)]
-         dark:focus:shadow-[inset_0_5px_4px_var(--shadow-color-dark),inset_0_-3px_2px_var(--light-color-dark)]"
+         dark:focus:shadow-[inset_0_5px_4px_var(--shadow-color-dark),inset_0_-3px_2px_var(--light-color-dark)] cursor-pointer"
   />
 </div>
