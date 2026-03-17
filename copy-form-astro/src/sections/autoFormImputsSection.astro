@@ -417,8 +417,10 @@ import TimeInput from "../components/timeInput.astro";
 <script>
   import { autoFormConfig } from "../scripts/autoFormConfig";
   import { targetElementDisplayer } from "../scripts/targetElementDisplayer";
+  import { disableInput } from "../scripts/disableInput";
 
   targetElementDisplayer(autoFormConfig);
+
   const selectBoxAutoLocation = document.getElementById(
     "selectBoxAutoLocation",
   ) as HTMLSelectElement;
@@ -445,15 +447,8 @@ import TimeInput from "../components/timeInput.astro";
   ) as HTMLInputElement;
 
   function servicesSwitcher(isDrivable: boolean, isVehicleMoved: boolean) {
-    checkboxTow.disabled = isDrivable || isVehicleMoved;
-    labelTow?.classList.toggle(
-      "cursor-pointer",
-      !isDrivable && !isVehicleMoved,
-    );
-    labelTow?.classList.toggle(
-      "cursor-not-allowed",
-      isDrivable || isVehicleMoved,
-    );
+    disableInput(checkboxTow, labelTow, isDrivable || isVehicleMoved, false);
+
     if (isDrivable) {
       generalBoxAutoTowRejectedReason.value = "Vehicle is drivable";
       generalBoxAutoRentalRejectedReason.value = "Vehicle is drivable";
@@ -470,9 +465,7 @@ import TimeInput from "../components/timeInput.astro";
       }
     }
 
-    checkboxRental.disabled = isDrivable;
-    labelRental.classList.toggle("cursor-pointer", !isDrivable);
-    labelRental.classList.toggle("cursor-not-allowed", isDrivable);
+    disableInput(checkboxRental, labelRental, isDrivable, false);
   }
   servicesSwitcher(
     selectBoxAutoDrivable.value === "Yes",
