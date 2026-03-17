@@ -26,25 +26,25 @@ function buildInsuredInfo(data: FormData): string {
 
 function buildVehicleInfo(data: FormData): string {
     return `*Vehicle: ${get(data, "generalBoxAutoVehicle")} (${get(data, "generalBoxAutoPlate")} / ${get(data, "generalBoxAutoColor")})\n`
-        + `*Current vehicle Location: ${get(data, "slectBoxAutoLocation")} (${get(data, "generalBoxAutoCurrentLocation")})\n\n`;
+        + `*Current vehicle Location: ${get(data, "selectBoxAutoLocation")} (${get(data, "generalBoxAutoCurrentLocation")})\n\n`;
 }
 
 function buildInjuriesInfo(data: FormData): string {
-    const injuries = get(data, "slectBoxAutoInjuries");
-    const ab = selected(data, "slectBoxAutoInjuries", "Yes")
-        ? get(data, "slectBoxAutoAB")
+    const injuries = get(data, "selectBoxAutoInjuries");
+    const ab = selected(data, "selectBoxAutoInjuries", "Yes")
+        ? get(data, "selectBoxAutoAB")
         : "No";
     return `*Injuries to insured? ${injuries}\n`
         + `*Insured wish to pursue an Accident Benefits (A/B) claim? ${ab}\n`;
 }
 
 function buildVehicleDetailsInfo(data: FormData): string {
-    return `*vehicle used for any commercial purposes? ${get(data, "slectBoxAutoCommercial")}\n`
-        + `*Any Dash Camera footage of the accident? ${get(data, "slectBoxAutoDashCam")}\n`;
+    return `*vehicle used for any commercial purposes? ${get(data, "selectBoxAutoCommercial")}\n`
+        + `*Any Dash Camera footage of the accident? ${get(data, "selectBoxAutoDashCam")}\n`;
 }
 
 function buildWitnessInfo(data: FormData): string {
-    let info = `*Any witnesses? ${get(data, "slectBoxAutoWitness")}`;
+    let info = `*Any witnesses? ${get(data, "selectBoxAutoWitness")}`;
     const name = data.get("generalBoxAutoWitnessName") as string;
     const tel = data.get("telBoxAutoWitness") as string;
     if (name) info += `\n-Witness name: ${name}`;
@@ -53,17 +53,17 @@ function buildWitnessInfo(data: FormData): string {
 }
 
 function buildDriverInfo(data: FormData): string {
-    const restriction = selected(data, "slectBoxAutoRestriction", "Yes")
+    const restriction = selected(data, "selectBoxAutoRestriction", "Yes")
         ? ` (${get(data, "generalBoxAutoRestriction")})\n`
         : "\n";
-    return `*Car seats (Baby seats): ${get(data, "slectBoxAutoSeats")}\n`
-        + `*Alcohol/Medication/Drugs: ${get(data, "slectBoxAutoDrugs")}\n`
-        + `*Any license restrictions? ${get(data, "slectBoxAutoRestriction")}${restriction}`
-        + `*Anti-theft Device (TOTAL THEFT)? ${get(data, "slectBoxAutoDevice")}\n\n`;
+    return `*Car seats (Baby seats): ${get(data, "selectBoxAutoSeats")}\n`
+        + `*Alcohol/Medication/Drugs: ${get(data, "selectBoxAutoDrugs")}\n`
+        + `*Any license restrictions? ${get(data, "selectBoxAutoRestriction")}${restriction}`
+        + `*Anti-theft Device (TOTAL THEFT)? ${get(data, "selectBoxAutoDevice")}\n\n`;
 }
 
 function buildThirdPartyInfo(data: FormData): string {
-    if (!selected(data, "slectBoxAutoThirdParty", "Yes")) {
+    if (!selected(data, "selectBoxAutoThirdParty", "Yes")) {
         return `****Third-party info not provided (${get(data, "generalBoxAutoThirdPartyReason")})****\n\n`;
     }
     return "****Third-party Info****\n"
@@ -74,7 +74,7 @@ function buildThirdPartyInfo(data: FormData): string {
 }
 
 function buildPoliceInfo(data: FormData): string {
-    if (!selected(data, "slectBoxAutoPolice", "Yes")) {
+    if (!selected(data, "selectBoxAutoPolice", "Yes")) {
         return `*Police report #: Unable to provide\n\n`;
     }
     return `*Police report #: ${get(data, "generalBoxAutoPoliceReport")} `
@@ -87,9 +87,9 @@ function buildBodyShopInfo(data: FormData): string {
     if (!checked(data, "checkboxBodyShop")) {
         return `****Preferred Shop Benefits Not Discussed (${get(data, "generalBoxAutoShopRejectedReason")})****\n\n`;
     }
-    const accepted = selected(data, "slectBoxBodyShopAccepted", "Yes")
+    const accepted = selected(data, "selectBoxBodyShopAccepted", "Yes")
         ? `-Body shop accepted: Yes\n-Scheduled Appraisal Date: ${formatDate(data)} (${get(data, "timeBoxBodyShopAppointment")})\n\n`
-        : `-Body shop accepted: No\n-Reason: ${get(data, "generalBoxAutoShopRejectedReasonOffered")}\n\n`;
+        : `-Body shop accepted: No\n-Reason: ${get(data, "generalBoxAutoShopRejectedReason")}\n\n`;
     return "*Advised preferred shop benefits: Yes\n" + accepted;
 }
 
@@ -111,7 +111,7 @@ function buildRentalInfo(data: FormData): string {
 }
 
 function buildServicesInfo(data: FormData): string {
-    if (!selected(data, "slectBoxAutoService", "Yes")) {
+    if (!selected(data, "selectBoxAutoService", "Yes")) {
         return `****No services offered (${get(data, "generalBoxAutoNoServiceReason")})****`;
     }
     return buildBodyShopInfo(data) + buildTowingInfo(data) + buildRentalInfo(data);

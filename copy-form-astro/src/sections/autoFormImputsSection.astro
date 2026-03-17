@@ -7,7 +7,10 @@ import DateInput from "../components/dateInput.astro";
 import TimeInput from "../components/timeInput.astro";
 ---
 
-<div class="grid grid-cols-1 gap-10">
+<div
+  class="grid grid-cols-1 gap-10 shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)]
+         dark:shadow-[5px_5px_10px_var(--shadow-color-dark),-5px_-5px_10px_var(--light-color-dark)] p-10! rounded-2xl"
+>
   <TelInput id="telBoxAuto" placeholder="phone number" required={true} />
   <EmailInput id="emailBoxAuto" placeholder="email address" required={false} />
   <GeneralInput
@@ -28,45 +31,24 @@ import TimeInput from "../components/timeInput.astro";
     capitalized={true}
     required={true}
   />
-  <SelectBox id="slectBoxAutoInjuries" label="Injuries" required={true}>
-    <label for="radioInjuriesNo" class="w-full h-full"
-      ><option value="No">No</option></label
-    >
-    <label for="radioInjuriesYes" class="w-full h-full"
-      ><option value="Yes">Yes</option></label
-    >
+  <SelectBox id="selectBoxAutoInjuries" label="Injuries" required={true}>
+    <option value="No">No</option>
+    <option value="Yes">Yes</option>
   </SelectBox>
-  <input
-    type="radio"
-    id="radioInjuriesYes"
-    name="radioGroupInjuries"
-    value="Yes"
-    class="peer/injuries hidden"
-  />
-  <input
-    type="radio"
-    id="radioInjuriesNo"
-    name="radioGroupInjuries"
-    value="No"
-    class="hidden"
-  />
-  <div class="peer-checked/injuries:block hidden">
+
+  <div id="selectBoxAutoABContainer" class="hidden">
     <SelectBox
-      id="slectBoxAutoAB"
+      id="selectBoxAutoAB"
       label="Accident Benefits (A/B)"
       required={true}
     >
-      <label for="radioABNo" class="w-full h-full"
-        ><option value="No">No</option></label
-      >
-      <label for="radioABYes" class="w-full h-full"
-        ><option value="Yes">Yes</option></label
-      >
+      <option value="No">No</option>
+      <option value="Yes">Yes</option>
     </SelectBox>
   </div>
 
   <SelectBox
-    id="slectBoxAutoLocation"
+    id="selectBoxAutoLocation"
     label="current vehicle location"
     required={true}
   >
@@ -82,6 +64,14 @@ import TimeInput from "../components/timeInput.astro";
 
     <option value="Other">Other</option>
   </SelectBox>
+  <SelectBox
+    id="selectBoxAutoDrivable"
+    label="vehicle drivable?"
+    required={true}
+  >
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </SelectBox>
   <GeneralInput
     id="generalBoxAutoCurrentLocation"
     placeholder="current vehicle location address"
@@ -89,54 +79,33 @@ import TimeInput from "../components/timeInput.astro";
   />
 </div>
 
-<div class="grid grid-cols-1 gap-10">
+<div
+  class="grid grid-cols-1 gap-10 shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)]
+         dark:shadow-[5px_5px_10px_var(--shadow-color-dark),-5px_-5px_10px_var(--light-color-dark)] p-10! rounded-2xl"
+>
   <SelectBox
-    id="slectBoxAutoCommercial"
+    id="selectBoxAutoCommercial"
     label="vehicle used for any commercial purposes?"
     required={true}
   >
-    <label for="radioCommercialNo" class="w-full h-full"
-      ><option value="No">No</option></label
-    >
-    <label for="radioCommercialYes" class="w-full h-full"
-      ><option value="Yes">Yes</option></label
-    >
+    <option value="No">No</option>
+    <option value="Yes">Yes</option>
   </SelectBox>
   <SelectBox
-    id="slectBoxAutoDashCam"
+    id="selectBoxAutoDashCam"
     label="any dash camera footage?"
     required={true}
   >
-    <label for="radioDashNo" class="w-full h-full"
-      ><option value="No">No</option></label
-    >
-    <label for="radioDashYes" class="w-full h-full"
-      ><option value="Yes">Yes</option></label
-    >
+    <option value="No">No</option>
+    <option value="Yes">Yes</option>
   </SelectBox>
-  <SelectBox id="slectBoxAutoWitness" label="any witness?" required={true}>
-    <label for="radioWitnessNo" class="w-full h-full"
-      ><option value="No">No</option></label
-    >
-    <label for="radioWitnessYes" class="w-full h-full"
-      ><option value="Yes">Yes</option></label
-    >
+
+  <SelectBox id="selectBoxAutoWitness" label="any witness?" required={true}>
+    <option value="No">No</option>
+    <option value="Yes">Yes</option>
   </SelectBox>
-  <input
-    type="radio"
-    id="radioWitnessYes"
-    name="radioGroupWitness"
-    value="Yes"
-    class="peer/witness hidden"
-  />
-  <input
-    type="radio"
-    id="radioWitnessNo"
-    name="radioGroupWitness"
-    value="No"
-    class="hidden"
-  />
-  <div class="peer-checked/witness:grid grid-cols-1 gap-10 hidden">
+
+  <div id="selectBoxAutoWitnessContainer" class="grid-cols-1 gap-10 hidden">
     <GeneralInput
       id="generalBoxAutoWitnessName"
       placeholder="witness name"
@@ -149,56 +118,30 @@ import TimeInput from "../components/timeInput.astro";
     />
   </div>
 
-  <SelectBox id="slectBoxAutoSeats" label="baby seats?" required={true}>
-    <label for="radioSeatsNo" class="w-full h-full"
-      ><option value="No">No</option></label
-    >
-    <label for="radioSeatsYes" class="w-full h-full"
-      ><option value="Yes">Yes</option></label
-    >
+  <SelectBox id="selectBoxAutoSeats" label="baby seats?" required={true}>
+    <option value="No">No</option>
+    <option value="Yes">Yes</option>
   </SelectBox>
 
   <SelectBox
-    id="slectBoxAutoDrugs"
+    id="selectBoxAutoDrugs"
     label="alcohol, medication or drugs?"
     required={true}
   >
-    <label for="radioDrugsNo" class="w-full h-full"
-      ><option value="No">No</option></label
-    >
-    <label for="radioDrugsYes" class="w-full h-full"
-      ><option value="Yes">Yes</option></label
-    >
+    <option value="No">No</option>
+    <option value="Yes">Yes</option>
   </SelectBox>
 
   <SelectBox
-    id="slectBoxAutoRestriction"
+    id="selectBoxAutoRestriction"
     label="any license restrictions?"
     required={true}
   >
-    <label for="radioRestrictionNo" class="w-full h-full"
-      ><option value="No">No</option></label
-    >
-    <label for="radioRestrictionYes" class="w-full h-full"
-      ><option value="Yes">Yes</option></label
-    >
+    <option value="No">No</option>
+    <option value="Yes">Yes</option>
   </SelectBox>
-  <input
-    type="radio"
-    id="radioRestrictionYes"
-    name="radioGroupRestriction"
-    value="Yes"
-    class="peer/restriction hidden"
-  />
-  <input
-    type="radio"
-    id="radioRestrictionNo"
-    name="radioGroupRestriction"
-    value="No"
-    class="hidden"
-  />
 
-  <div class="peer-checked/restriction:block hidden">
+  <div id="selectBoxAutoRestrictionContainer" class="hidden">
     <GeneralInput
       id="generalBoxAutoRestriction"
       name="restrictions"
@@ -209,43 +152,22 @@ import TimeInput from "../components/timeInput.astro";
 
   <div class="grid grid-cols-1 gap-10">
     <SelectBox
-      id="slectBoxAutoDevice"
+      id="selectBoxAutoDevice"
       label="anti-theft device?"
       required={true}
     >
-      <label for="radioDeviceNo" class="w-full h-full"
-        ><option value="No">No</option></label
-      >
-      <label for="radioDeviceYes" class="w-full h-full"
-        ><option value="Yes">Yes</option></label
-      >
+      <option value="No">No</option>
+      <option value="Yes">Yes</option>
     </SelectBox>
   </div>
 
-  <SelectBox id="slectBoxAutoThirdParty" label="third-party?" required={true}>
-    <label for="radioThirdPartyNo" class="w-full h-full"
-      ><option value="No">No</option></label
-    >
+  <SelectBox id="selectBoxAutoThirdParty" label="third-party?" required={true}>
+    <option value="No">No</option>
 
-    <label for="radioThirdPartyYes" class="w-full h-full"
-      ><option value="Yes">Yes</option></label
-    >
+    <option value="Yes">Yes</option>
   </SelectBox>
-  <input
-    type="radio"
-    id="radioThirdPartyYes"
-    name="radioGroupThirdParty"
-    value="Yes"
-    class="peer/third-party hidden"
-  />
-  <input
-    type="radio"
-    id="radioThirdPartyNo"
-    name="radioGroupThirdParty"
-    value="No"
-    class="hidden"
-  />
-  <div class="peer-checked/third-party:hidden block">
+
+  <div id="selectBoxAutoThirdPartyReasonContainer" class="block">
     <GeneralInput
       id="generalBoxAutoThirdPartyReason"
       name="thirdPartyReason"
@@ -253,7 +175,7 @@ import TimeInput from "../components/timeInput.astro";
       required={true}
     />
   </div>
-  <div class="peer-checked/third-party:grid grid-cols-1 gap-10 hidden">
+  <div id="selectBoxAutoThirdPartyContainer" class="grid-cols-1 gap-10 hidden">
     <GeneralInput
       id="generalBoxAutoThirdPartyName"
       name="thirdPartyName"
@@ -303,30 +225,13 @@ import TimeInput from "../components/timeInput.astro";
       required={false}
     />
   </div>
-  <SelectBox id="slectBoxAutoPolice" label="Police reported?" required={true}>
-    <label for="radioPoliceNo" class="w-full h-full"
-      ><option value="No">No</option></label
-    >
+  <SelectBox id="selectBoxAutoPolice" label="Police reported?" required={true}>
+    <option value="No">No</option>
 
-    <label for="radioPoliceYes" class="w-full h-full"
-      ><option value="Yes">Yes</option></label
-    >
+    <option value="Yes">Yes</option>
   </SelectBox>
-  <input
-    type="radio"
-    id="radioPoliceYes"
-    name="radioGroupPolice"
-    value="Yes"
-    class="peer/police hidden"
-  />
-  <input
-    type="radio"
-    id="radioPoliceNo"
-    name="radioGroupPolice"
-    value="No"
-    class="hidden"
-  />
-  <div class="peer-checked/police:grid grid-cols-1 gap-10 hidden">
+
+  <div id="selectBoxAutoPoliceContainer" class="grid-cols-1 gap-10 hidden">
     <GeneralInput
       id="generalBoxAutoPoliceReport"
       placeholder="police report #"
@@ -349,45 +254,38 @@ import TimeInput from "../components/timeInput.astro";
     />
   </div>
 </div>
+<div
+  class="grid grid-cols-1 gap-10 shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)]
+         dark:shadow-[5px_5px_10px_var(--shadow-color-dark),-5px_-5px_10px_var(--light-color-dark)] p-10! rounded-2xl"
+>
+  <GeneralInput
+    id="generalBoxAutoADJ"
+    placeholder="Claim assigned to ADJ"
+    required={true}
+  />
+</div>
 
-<GeneralInput
-  id="generalBoxAutoADJ"
-  placeholder="Claim assigned to ADJ"
-  required={true}
-/>
-
-<div class="grid grid-cols-1 gap-10">
-  <SelectBox id="slectBoxAutoService" label="Services offered?" required={true}>
-    <label for="radioServiceYes" class="w-full h-full"
-      ><option value="Yes">Yes</option></label
-    >
-    <label for="radioServiceNo" class="w-full h-full"
-      ><option value="No">No</option></label
-    >
+<div
+  class="grid grid-cols-1 gap-10 shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)]
+         dark:shadow-[5px_5px_10px_var(--shadow-color-dark),-5px_-5px_10px_var(--light-color-dark)] p-10! rounded-2xl"
+>
+  <SelectBox
+    id="selectBoxAutoService"
+    label="Services offered?"
+    required={true}
+  >
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
   </SelectBox>
-  <input
-    type="radio"
-    id="radioServiceYes"
-    name="radioGroupService"
-    value="Yes"
-    checked
-    class="peer/service hidden"
-  />
-  <input
-    type="radio"
-    id="radioServiceNo"
-    name="radioGroupService"
-    value="No"
-    class="peer/noService hidden"
-  />
-  <div class="peer-checked/noService:block hidden">
+
+  <div id="selectBoxAutoServiceReasonContainer" class="hidden">
     <GeneralInput
       id="generalBoxAutoNoServiceReason"
       placeholder="reason for no services offered"
       required={true}
     />
   </div>
-  <div class="peer-checked/service:grid grid-cols-1 gap-10 hidden">
+  <div id="selectBoxAutoServiceContainer" class="grid-cols-1 gap-10 hidden">
     <input
       type="checkbox"
       id="checkboxBodyShop"
@@ -439,40 +337,17 @@ import TimeInput from "../components/timeInput.astro";
     </div>
     <div class="peer-checked/bodyshop:grid grid-cols-1 gap-10 hidden">
       <SelectBox
-        id="slectBoxBodyShopAccepted"
+        id="selectBoxBodyShopAccepted"
         label="Body shop accepted?"
         required={true}
       >
-        <label for="radioBodyShopYes" class="w-full h-full"
-          ><option value="Yes">Yes</option></label
-        >
-        <label for="radioBodyShopNo" class="w-full h-full"
-          ><option value="No">No</option></label
-        >
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
       </SelectBox>
-      <input
-        type="radio"
-        id="radioBodyShopYes"
-        name="radioGroupBodyShop"
-        value="Yes"
-        checked
-        class="peer/bodyshopAccepted hidden"
-      />
-      <input
-        type="radio"
-        id="radioBodyShopNo"
-        name="radioGroupBodyShop"
-        value="No"
-        class="peer/bodyshopRejected hidden"
-      />
-      <div class="peer-checked/bodyshopRejected:block hidden">
-        <GeneralInput
-          id="generalBoxAutoShopRejectedReasonOffered"
-          placeholder="reason for Body shop rejection"
-          required={true}
-        />
-      </div>
-      <div class="peer-checked/bodyshopAccepted:grid grid-cols-2 gap-5 hidden">
+      <div
+        id="selectBoxBodyShopAcceptedContainer"
+        class="grid-cols-2 gap-5 hidden"
+      >
         <DateInput
           id="dateBoxBodyShopAppointment"
           placeholder="date"
@@ -513,7 +388,10 @@ import TimeInput from "../components/timeInput.astro";
         required={true}
       />
     </div>
-    <div class="peer-checked/bodyshop:hidden block">
+    <div
+      id="generalBoxAutoShopRejectedReasonContainer"
+      class="peer-checked/bodyshop:hidden block"
+    >
       <GeneralInput
         id="generalBoxAutoShopRejectedReason"
         placeholder="reason for Body shop rejection"
@@ -536,3 +414,208 @@ import TimeInput from "../components/timeInput.astro";
     </div>
   </div>
 </div>
+<script>
+  import { selectShowElement } from "../scripts/selectShowElement.ts";
+  const configs = [
+    {
+      select: "selectBoxAutoInjuries",
+      targets: [
+        {
+          container: "selectBoxAutoABContainer",
+          expectedValue: "Yes",
+          displayClass: "block",
+        },
+      ],
+    },
+    {
+      select: "selectBoxAutoWitness",
+      targets: [
+        {
+          container: "selectBoxAutoWitnessContainer",
+          expectedValue: "Yes",
+          displayClass: "grid",
+        },
+      ],
+    },
+    {
+      select: "selectBoxAutoRestriction",
+      targets: [
+        {
+          container: "selectBoxAutoRestrictionContainer",
+          expectedValue: "Yes",
+          displayClass: "block",
+        },
+      ],
+    },
+    {
+      select: "selectBoxAutoThirdParty",
+      targets: [
+        {
+          container: "selectBoxAutoThirdPartyReasonContainer",
+          expectedValue: "No",
+          displayClass: "block",
+        },
+        {
+          container: "selectBoxAutoThirdPartyContainer",
+          expectedValue: "Yes",
+          displayClass: "grid",
+        },
+      ],
+    },
+    {
+      select: "selectBoxAutoPolice",
+      targets: [
+        {
+          container: "selectBoxAutoPoliceContainer",
+          expectedValue: "Yes",
+          displayClass: "grid",
+        },
+      ],
+    },
+    {
+      select: "selectBoxAutoService",
+      targets: [
+        {
+          container: "selectBoxAutoServiceReasonContainer",
+          expectedValue: "No",
+          displayClass: "block",
+        },
+        {
+          container: "selectBoxAutoServiceContainer",
+          expectedValue: "Yes",
+          displayClass: "grid",
+        },
+      ],
+    },
+  ];
+
+  configs.forEach(({ select, targets }) => {
+    const selectEl = document.getElementById(select) as HTMLSelectElement;
+
+    targets.forEach(({ container, expectedValue, displayClass }) => {
+      const containerEl = document.getElementById(container) as HTMLElement;
+      selectShowElement(
+        containerEl,
+        selectEl.value,
+        expectedValue,
+        displayClass,
+      );
+      selectEl.addEventListener("change", function (e) {
+        selectShowElement(containerEl, this.value, expectedValue, displayClass);
+      });
+    });
+  });
+
+  const selectBoxBodyShopAccepted = document.getElementById(
+    "selectBoxBodyShopAccepted",
+  ) as HTMLSelectElement;
+  const selectBoxBodyShopAcceptedContainer = document.getElementById(
+    "selectBoxBodyShopAcceptedContainer",
+  ) as HTMLElement;
+  const generalBoxAutoShopRejectedReasonContainer = document.getElementById(
+    "generalBoxAutoShopRejectedReasonContainer",
+  ) as HTMLElement;
+  selectShowElement(
+    selectBoxBodyShopAcceptedContainer,
+    selectBoxBodyShopAccepted.value,
+    "Yes",
+    "grid",
+  );
+
+  selectShowElement(
+    generalBoxAutoShopRejectedReasonContainer,
+    selectBoxBodyShopAccepted.value,
+    "No",
+    "block",
+    "peer-checked/bodyshop:hidden",
+  );
+
+  selectBoxBodyShopAccepted.addEventListener("change", function (e) {
+    selectShowElement(
+      selectBoxBodyShopAcceptedContainer,
+      this.value,
+      "Yes",
+      "grid",
+    );
+
+    selectShowElement(
+      generalBoxAutoShopRejectedReasonContainer,
+      selectBoxBodyShopAccepted.value,
+      "No",
+      "block",
+      "peer-checked/bodyshop:hidden",
+    );
+  });
+
+  const selectBoxAutoLocation = document.getElementById(
+    "selectBoxAutoLocation",
+  ) as HTMLSelectElement;
+  const selectBoxAutoDrivable = document.getElementById(
+    "selectBoxAutoDrivable",
+  ) as HTMLSelectElement;
+  const checkboxTow = document.getElementById(
+    "checkboxTow",
+  ) as HTMLInputElement;
+  const checkboxRental = document.getElementById(
+    "checkboxRental",
+  ) as HTMLInputElement;
+  const labelTow = document.querySelector(
+    "label[for='checkboxTow']",
+  ) as HTMLLabelElement;
+  const labelRental = document.querySelector(
+    "label[for='checkboxRental']",
+  ) as HTMLLabelElement;
+  const generalBoxAutoTowRejectedReason = document.getElementById(
+    "generalBoxAutoTowRejectedReason",
+  ) as HTMLInputElement;
+  const generalBoxAutoRentalRejectedReason = document.getElementById(
+    "generalBoxAutoRentalRejectedReason",
+  ) as HTMLInputElement;
+
+  function servicesSwitcher(isDrivable: boolean, isVehicleMoved: boolean) {
+    checkboxTow.disabled = isDrivable || isVehicleMoved;
+    labelTow?.classList.toggle(
+      "cursor-pointer",
+      !isDrivable && !isVehicleMoved,
+    );
+    labelTow?.classList.toggle(
+      "cursor-not-allowed",
+      isDrivable || isVehicleMoved,
+    );
+    if (isDrivable) {
+      generalBoxAutoTowRejectedReason.value = "Vehicle is drivable";
+      generalBoxAutoRentalRejectedReason.value = "Vehicle is drivable";
+      if (isVehicleMoved) {
+        generalBoxAutoTowRejectedReason.value = `Vehicle is drivable and it's located at ${selectBoxAutoLocation.value}`;
+      }
+    } else {
+      generalBoxAutoRentalRejectedReason.value = "";
+      if (isVehicleMoved) {
+        generalBoxAutoTowRejectedReason.value = `Vehicle at ${selectBoxAutoLocation.value}`;
+      }
+      if (!isVehicleMoved) {
+        generalBoxAutoTowRejectedReason.value = "";
+      }
+    }
+
+    checkboxRental.disabled = isDrivable;
+    labelRental.classList.toggle("cursor-pointer", !isDrivable);
+    labelRental.classList.toggle("cursor-not-allowed", isDrivable);
+  }
+  servicesSwitcher(
+    selectBoxAutoDrivable.value === "Yes",
+    !(selectBoxAutoLocation.value === "Scene of the accident"),
+  );
+  selectBoxAutoLocation.addEventListener("change", function (e) {
+    servicesSwitcher(
+      selectBoxAutoDrivable.value === "Yes",
+      !(this.value === "Scene of the accident"),
+    );
+  });
+  selectBoxAutoDrivable.addEventListener("change", function (e) {
+    servicesSwitcher(
+      this.value === "Yes",
+      !(selectBoxAutoLocation.value === "Scene of the accident"),
+    );
+  });
+</script>
