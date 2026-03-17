@@ -1,5 +1,6 @@
 import { SelectDisplay } from "./SelectDisplay";
-import { TargetDisplay } from "./TargetDisplay";
+import { Target } from "./Target";
+import type { TargetDisplay } from "./TargetDisplay";
 import { selectShowElement } from "./selectShowElement";
 
 export function targetElementDisplayer(selectDisplayElements: Array<SelectDisplay>) {
@@ -11,8 +12,8 @@ export function targetElementDisplayer(selectDisplayElements: Array<SelectDispla
     })
 }
 
-function selectShowElementApplier(selectComponentValue: string, targetDisplayElements: Array<TargetDisplay>) {
+function selectShowElementApplier(selectComponentValue: string, targetDisplayElements: Array<Target>) {
     targetDisplayElements.forEach((targetDisplay) => {
-        selectShowElement(targetDisplay.displayElement, selectComponentValue, targetDisplay.expectedValue, targetDisplay.displayClass, targetDisplay.hiddenClass);
+        selectShowElement(targetDisplay.targetElement, selectComponentValue, targetDisplay.expectedValue, (targetDisplay as TargetDisplay).displayClass, (targetDisplay as TargetDisplay).hiddenClass);
     })
 }

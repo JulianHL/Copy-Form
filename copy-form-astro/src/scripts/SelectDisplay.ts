@@ -1,12 +1,12 @@
-import { TargetDisplay } from "./TargetDisplay";
+import { Target } from "./Target";
 
 export class SelectDisplay{
     private _selectComponent: HTMLSelectElement;
-    private _targetDisplayElements: Array<TargetDisplay>;
+    private _targetElements: Array<Target>;
 
-    constructor(selectComponentId: string, targetDisplayElements: Array<TargetDisplay>) {
+    constructor(selectComponentId: string, targetDisplayElements: Array<Target>) {
         this._selectComponent = document.getElementById(selectComponentId) as HTMLSelectElement;
-        this._targetDisplayElements = targetDisplayElements;
+        this._targetElements = targetDisplayElements;
     }
 
     get selectComponent(): HTMLSelectElement{
@@ -17,7 +17,7 @@ export class SelectDisplay{
         return this._selectComponent.value;
     }
 
-    get targetDisplayElements(): Array<TargetDisplay>{
-        return this._targetDisplayElements
+    get targetDisplayElements(): Array<Target>{
+        return this._targetElements
     }
 }
