@@ -3,7 +3,7 @@ export function selectShowElement(
     selectInput: string,
     expectedValue: string,
     displayClass: string,
-    hiddenClass: string = "hidden"
+    hiddenClass: string 
 ) {
     const isVisible = selectInput === expectedValue;
     element.classList.toggle(hiddenClass, !isVisible);
