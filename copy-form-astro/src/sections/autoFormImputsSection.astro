@@ -62,7 +62,7 @@ import TimeInput from "../components/timeInput.astro";
 
     <option value="Collision Center">Collision center</option>
 
-    <option value="Other">Other</option>
+    <option value="Other Location">Other Location</option>
   </SelectBox>
   <SelectBox
     id="selectBoxAutoDrivable"
@@ -415,11 +415,14 @@ import TimeInput from "../components/timeInput.astro";
   </div>
 </div>
 <script>
-  import { autoFormConfig } from "../scripts/autoFormConfig";
+  import { autoFormConfigSelectDisplay } from "../scripts/autoFormConfig";
   import { targetElementDisplayer } from "../scripts/targetElementDisplayer";
   import { disableInput } from "../scripts/disableInput";
+  import { autoFormConfigSelectType } from "../scripts/autoFormConfig";
+  import { targetElementTyper } from "../scripts/targetElementTyper";
 
-  targetElementDisplayer(autoFormConfig);
+  targetElementDisplayer(autoFormConfigSelectDisplay);
+  targetElementTyper(autoFormConfigSelectType);
 
   const selectBoxAutoLocation = document.getElementById(
     "selectBoxAutoLocation",
@@ -445,42 +448,4 @@ import TimeInput from "../components/timeInput.astro";
   const generalBoxAutoRentalRejectedReason = document.getElementById(
     "generalBoxAutoRentalRejectedReason",
   ) as HTMLInputElement;
-
-  function servicesSwitcher(isDrivable: boolean, isVehicleMoved: boolean) {
-    disableInput(checkboxTow, labelTow, isDrivable || isVehicleMoved, false);
-
-    if (isDrivable) {
-      generalBoxAutoTowRejectedReason.value = "Vehicle is drivable";
-      generalBoxAutoRentalRejectedReason.value = "Vehicle is drivable";
-      if (isVehicleMoved) {
-        generalBoxAutoTowRejectedReason.value = `Vehicle is drivable and it's located at ${selectBoxAutoLocation.value}`;
-      }
-    } else {
-      generalBoxAutoRentalRejectedReason.value = "";
-      if (isVehicleMoved) {
-        generalBoxAutoTowRejectedReason.value = `Vehicle at ${selectBoxAutoLocation.value}`;
-      }
-      if (!isVehicleMoved) {
-        generalBoxAutoTowRejectedReason.value = "";
-      }
-    }
-
-    disableInput(checkboxRental, labelRental, isDrivable, false);
-  }
-  servicesSwitcher(
-    selectBoxAutoDrivable.value === "Yes",
-    !(selectBoxAutoLocation.value === "Scene of the accident"),
-  );
-  selectBoxAutoLocation.addEventListener("change", function (e) {
-    servicesSwitcher(
-      selectBoxAutoDrivable.value === "Yes",
-      !(this.value === "Scene of the accident"),
-    );
-  });
-  selectBoxAutoDrivable.addEventListener("change", function (e) {
-    servicesSwitcher(
-      this.value === "Yes",
-      !(selectBoxAutoLocation.value === "Scene of the accident"),
-    );
-  });
 </script>

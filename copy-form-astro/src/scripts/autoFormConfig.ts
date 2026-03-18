@@ -1,7 +1,9 @@
 import { SelectDisplay } from "./SelectDisplay"
 import { TargetDisplay } from "./TargetDisplay"
+import { TargetType } from "./TargetType"
 
-export const autoFormConfig: Array<SelectDisplay> = [
+
+export const autoFormConfigSelectDisplay: Array<SelectDisplay> = [
     new SelectDisplay("selectBoxAutoInjuries", [
         new TargetDisplay("selectBoxAutoABContainer", "Yes")
     ]),
@@ -27,4 +29,9 @@ export const autoFormConfig: Array<SelectDisplay> = [
         new TargetDisplay("generalBoxAutoShopRejectedReasonContainer", "No", "block" ,"peer-checked/bodyshop:hidden")
     ]),
     
+]
+
+export const autoFormConfigSelectType: Array<SelectDisplay> = [
+    new SelectDisplay("selectBoxAutoLocation", [new TargetType("generalBoxAutoTowRejectedReason", "Scene of the accident", "Vehicle moved from the scene of the accident")]),
+    new SelectDisplay("selectBoxAutoDrivable",[new TargetType("generalBoxAutoTowRejectedReason", "No", "Vehicle is drivable"), new TargetType("generalBoxAutoRentalRejectedReason", "No", "Vehicle is drivable")])
 ]

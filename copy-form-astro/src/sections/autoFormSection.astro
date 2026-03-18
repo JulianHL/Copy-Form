@@ -65,4 +65,12 @@ import AutoFormImputsSection from "./autoFormImputsSection.astro";
     requiredInputSwitch();
     form.requestSubmit();
   });
+
+  form.addEventListener("reset", () => {
+    setTimeout(() => {
+      form.querySelectorAll("select").forEach((select) => {
+        select.dispatchEvent(new Event("change"));
+      });
+    }, 0);
+  });
 </script>
