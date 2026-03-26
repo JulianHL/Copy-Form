@@ -1,20 +1,12 @@
-import { SelectDisplay } from "./SelectDisplay";
-import type { Target } from "./Target";
-import type { TargetType } from "./TargetType";
-import { selectTypeElement } from "./selectTypeElement";
+import type { selectBindingType } from "./SelectBindingType";
 
-export function targetElementTyper(seclectDisplayElements: Array<SelectDisplay>) {
-    seclectDisplayElements.forEach((selectDisplay) => {
-        selectTypeElementApplier(selectDisplay.selectComponentValue, selectDisplay.targetDisplayElements)
-
-        selectDisplay.selectComponent.addEventListener("change", function (e) {
-            selectTypeElementApplier(selectDisplay.selectComponentValue, selectDisplay.targetDisplayElements);
+export function targetElementTyper(seclectBindingTypeElements: Array<selectBindingType>) {
+    seclectBindingTypeElements.forEach((selectBinding) => {
+        selectBinding.typeTarget();
+        selectBinding.selectComponent.addEventListener("change", function (e) {
+            seclectBindingTypeElements.forEach((selectBindingListener) => {
+                selectBindingListener.typeTarget();
+            })
         })
     })
-}
-
-function selectTypeElementApplier(selectComponentValue: string, targetTypeElements: Array<Target>) {
-    targetTypeElements.forEach((targetType) => {
-        selectTypeElement(selectComponentValue, targetType as TargetType);
-    });
 }

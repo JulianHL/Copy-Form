@@ -313,6 +313,7 @@ import TimeInput from "../components/timeInput.astro";
       class="h-20 dark:shadow-[0.5rem_0.5rem_1rem_var(--shadow-color-dark),-0.5rem_-0.5rem_1rem_var(--light-color-dark)] peer-checked/tow:dark:shadow-[inset_0_5px_4px_var(--shadow-color-dark),0_3px_2px_var(--light-color-dark)] shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)] peer-checked/tow:shadow-[inset_0_5px_4px_var(--shadow-color),0_3px_2px_var(--light-color)] rounded-2xl"
     >
       <label
+        id="checkboxTowLabel"
         for="checkboxTow"
         class="h-full w-full flex items-center font-bold p-5! relative cursor-pointer"
       >
@@ -329,6 +330,7 @@ import TimeInput from "../components/timeInput.astro";
       class="h-20 dark:shadow-[0.5rem_0.5rem_1rem_var(--shadow-color-dark),-0.5rem_-0.5rem_1rem_var(--light-color-dark)] peer-checked/rental:dark:shadow-[inset_0_5px_4px_var(--shadow-color-dark),0_3px_2px_var(--light-color-dark)] shadow-[5px_5px_10px_var(--shadow-color),-5px_-5px_10px_var(--light-color)] peer-checked/rental:shadow-[inset_0_5px_4px_var(--shadow-color),0_3px_2px_var(--light-color)] rounded-2xl"
     >
       <label
+        id="checkboxRentalLabel"
         for="checkboxRental"
         class="h-full w-full flex items-center font-bold p-5! relative cursor-pointer"
       >
@@ -415,37 +417,16 @@ import TimeInput from "../components/timeInput.astro";
   </div>
 </div>
 <script>
-  import { autoFormConfigSelectDisplay } from "../scripts/autoFormConfig";
+  import {
+    autoFormConfigSelectDisplay,
+    autoFormConfigSelectType,
+    autoFormConfigSelectDisable,
+  } from "../scripts/autoFormConfig";
   import { targetElementDisplayer } from "../scripts/targetElementDisplayer";
-  import { disableInput } from "../scripts/disableInput";
-  import { autoFormConfigSelectType } from "../scripts/autoFormConfig";
   import { targetElementTyper } from "../scripts/targetElementTyper";
+  import { targetElementDisabler } from "../scripts/targetElementDisabler";
 
   targetElementDisplayer(autoFormConfigSelectDisplay);
   targetElementTyper(autoFormConfigSelectType);
-
-  const selectBoxAutoLocation = document.getElementById(
-    "selectBoxAutoLocation",
-  ) as HTMLSelectElement;
-  const selectBoxAutoDrivable = document.getElementById(
-    "selectBoxAutoDrivable",
-  ) as HTMLSelectElement;
-  const checkboxTow = document.getElementById(
-    "checkboxTow",
-  ) as HTMLInputElement;
-  const checkboxRental = document.getElementById(
-    "checkboxRental",
-  ) as HTMLInputElement;
-  const labelTow = document.querySelector(
-    "label[for='checkboxTow']",
-  ) as HTMLLabelElement;
-  const labelRental = document.querySelector(
-    "label[for='checkboxRental']",
-  ) as HTMLLabelElement;
-  const generalBoxAutoTowRejectedReason = document.getElementById(
-    "generalBoxAutoTowRejectedReason",
-  ) as HTMLInputElement;
-  const generalBoxAutoRentalRejectedReason = document.getElementById(
-    "generalBoxAutoRentalRejectedReason",
-  ) as HTMLInputElement;
+  targetElementDisabler(autoFormConfigSelectDisable);
 </script>

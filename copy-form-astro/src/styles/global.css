@@ -64,7 +64,6 @@ select:open {
 }
 
 ::picker(select) {
-    position: relative;
     border-radius: 20px;
     background: var(--bg-color-light);
     box-shadow: 5px 5px 10px var(--shadow-color), -5px -5px 10px var(--light-color);
@@ -92,16 +91,17 @@ select:open {
     option{
         color: var(--text-color-dark);
     }
-    label option:hover {
-        background-color: transparent;
-        box-shadow: 5px 5px 10px var(--shadow-color-dark), -5px -5px 10px var(--light-color-dark);
-    }
 
     .icon{
         fill: var(--text-color-dark);
     }
     .icon-open{
         fill: var(--text-color-dark);
+    }
+
+    option:hover {
+        background-color: transparent;
+        box-shadow: 5px 5px 10px var(--shadow-color-dark), -5px -5px 10px var(--light-color-dark) !important;
     }
 }
 
@@ -138,8 +138,9 @@ option {
     }
 }
 
-form option:hover {
+option:hover {
     background-color: transparent;
     box-shadow: 5px 5px 10px var(--shadow-color), -5px -5px 10px var(--light-color);
 }
+
 

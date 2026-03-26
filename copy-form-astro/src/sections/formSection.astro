@@ -62,6 +62,14 @@ import Choice from "../components/choice.astro";
           ></i></submit
         ></Button
       >
+      <SelectBox id="slectBox1" label="example" required={true}>
+        <label for="radioYes" class="w-full h-full"
+          ><option value="Yes">Yes</option></label
+        >
+        <label for="radioNo" class="w-full h-full"
+          ><option selected value="No">No</option></label
+        >
+      </SelectBox>
     </Form>
   </div>
 </section>

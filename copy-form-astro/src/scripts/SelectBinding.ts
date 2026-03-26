@@ -1,8 +1,10 @@
 import { Target } from "./Target";
+import type { TargetDisable } from "./TargetDisable";
+import type { TargetType } from "./TargetType";
 
-export class SelectDisplay{
-    private _selectComponent: HTMLSelectElement;
-    private _targetElements: Array<Target>;
+export abstract class SelectBinding{
+    protected _selectComponent: HTMLSelectElement;
+    protected _targetElements: Array<Target>;
 
     constructor(selectComponentId: string, targetDisplayElements: Array<Target>) {
         this._selectComponent = document.getElementById(selectComponentId) as HTMLSelectElement;
@@ -17,7 +19,11 @@ export class SelectDisplay{
         return this._selectComponent.value;
     }
 
-    get targetDisplayElements(): Array<Target>{
+    get targetElements(): Array<Target>{
         return this._targetElements
     }
+
+
+
+
 }
